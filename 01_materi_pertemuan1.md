@@ -12,7 +12,7 @@
 
 ### Apa itu Pemrograman?
 
-Sebelum kita bicara tentang OOP, mari kita pahami dulu apa itu **pemrograman**. Pemrograman adalah proses menulis instruksi (kode) yang告诉 komputer apa yang harus dilakukan. Komputer adalah mesin yang sangat pintar tetapi juga sangat **bodoh** — ia hanya melakukan apa yang kita perintahkan, tidak lebih, tidak kurang.
+Sebelum kita bicara tentang OOP, mari kita pahami dulu apa itu **pemrograman**. Pemrograman adalah proses menulis instruksi (kode) yang komputer apa yang harus dilakukan. Komputer adalah mesin yang sangat pintar tetapi juga sangat **bodoh** — ia hanya melakukan apa yang kita perintahkan, tidak lebih, tidak kurang.
 
 ### Paradigma Pemrograman
 

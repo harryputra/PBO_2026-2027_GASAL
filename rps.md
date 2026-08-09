@@ -14,7 +14,7 @@ Berikut adalah Rencana Pembelajaran Semester (RPS) untuk mata kuliah **Pemrogram
 | **Semester** | III (Tiga) |
 | **Jumlah Pertemuan** | 8 pertemuan × 8 jam praktik |
 | **Total Jam Praktik** | 64 jam |
-| **Dosen Pengampu** | [Nama Dosen] |
+| **Dosen Pengampu** | Mohammad Harry Khomas Saputra |
 
 ---
 
