@@ -1287,7 +1287,7 @@ Apa yang akan dipelajari:
 ## 8.2 Referensi Pendukung
 
 1. **Android Developers — Kotlin Learn** — [https://developer.android.com/kotlin/learn](https://developer.android.com/kotlin/learn)
-2. **Kotlin 中文文档** — [https://book.kotlincn.net/](https://book.kotlincn.net/)
+2. **Kotlin** — [https://book.kotlincn.net/](https://book.kotlincn.net/)
 
 ## 8.3 Istilah Penting
 
