@@ -1,1142 +1,973 @@
-# MATERI AJAR PERTEMUAN 1
-
+# MATERI AJAR PERTEMUAN 4
 ## PEMROGRAMAN BERORIENTASI OBJEK (OOP) DENGAN KOTLIN
-
-### “Dari Nol Menjadi Programmer OOP — Fondasi untuk Mobile Programming”
-
----
-
-# BAGIAN 1: PENDAHULUAN DAN KONSEP DASAR OOP
-
-## 1.1 Selamat Datang di Dunia Pemrograman Berorientasi Objek
-
-### Apa itu Pemrograman?
-
-Sebelum kita bicara tentang OOP, mari kita pahami dulu apa itu **pemrograman**. Pemrograman adalah proses menulis instruksi (kode) yang告诉 komputer apa yang harus dilakukan. Komputer adalah mesin yang sangat pintar tetapi juga sangat **bodoh** — ia hanya melakukan apa yang kita perintahkan, tidak lebih, tidak kurang.
-
-### Paradigma Pemrograman
-
-Paradigma pemrograman adalah **gaya** atau **cara berpikir** dalam menulis kode. Ada beberapa paradigma utama:
-
-| **Paradigma** | **Deskripsi** | **Contoh Bahasa** |
-| --- | --- | --- |
-| **Prosedural** | Program ditulis sebagai urutan instruksi/langkah demi langkah | C, Pascal, BASIC |
-| **Fungsional** | Program dibangun dari fungsi-fungsi murni (tanpa efek samping) | Haskell, Lisp, Erlang |
-| **Berorientasi Objek (OOP)** | Program dibangun dari **objek** yang memiliki **data** dan **perilaku** | Java, C++, Python, Kotlin, C# |
-
-### Mengapa OOP?
-
-OOP lahir karena kebutuhan untuk mengelola **kompleksitas perangkat lunak**. Bayangkan Anda membuat aplikasi e-commerce seperti Tokopedia atau Shopee — ada ribuan fitur, jutaan pengguna, dan milyaran transaksi. Bagaimana cara mengatur semua itu?
-
-OOP menjawab pertanyaan ini dengan satu prinsip sederhana: **“Modelkan dunia nyata ke dalam kode.”**
-
-Di dunia nyata, kita berinteraksi dengan **objek**: mobil, rumah, manusia, buku, dan sebagainya. Setiap objek memiliki:
-
-- **Karakteristik** (data/properti) — misalnya mobil memiliki warna, merek, tahun produksi
-- **Perilaku** (fungsi/metode) — misalnya mobil bisa berjalan, berhenti, membelok
-
-OOP membawa konsep ini ke dalam pemrograman.
+### “Polimorfisme — Satu Antarmuka, Banyak Bentuk”
 
 ---
 
-## 1.2 Definisi Pemrograman Berorientasi Objek (OOP)
+# BAGIAN 1: KONSEP DASAR POLIMORFISME
 
-**Pemrograman Berorientasi Objek (Object-Oriented Programming / OOP)** adalah paradigma pemrograman yang mengorganisir kode di sekitar **objek** (yang berisi data dan perilaku) daripada di sekitar **fungsi** dan **logika**.
+## 1.1 Apa itu Polimorfisme?
 
-> “OOP adalah cara berpikir: **bukan ‘apa yang harus saya lakukan?** ’ tetapi **‘objek apa yang ada, dan apa yang bisa mereka lakukan?’** ”
+**Polimorfisme (Polymorphism)** adalah salah satu dari **empat pilar utama** dalam Pemrograman Berorientasi Objek (OOP), bersama dengan Encapsulation (Enkapsulasi), Inheritance (Pewarisan), dan Abstraction (Abstraksi).
+
+Secara etimologi, kata "polimorfisme" berasal dari bahasa Yunani: ***poly*** (banyak) dan ***morph*** (bentuk). Jadi, polimorfisme berarti **"banyak bentuk"** .
+
+> **Definisi Sederhana:** Polimorfisme adalah kemampuan sebuah objek atau metode untuk **berperilaku berbeda** tergantung pada konteksnya. Satu antarmuka (interface) yang sama dapat memiliki banyak implementasi yang berbeda.
+
+Dalam konteks pemrograman, polimorfisme memungkinkan:
+- Objek dari kelas yang berbeda untuk **merespons pesan yang sama dengan cara yang berbeda**
+- Sebuah variabel bertipe superclass untuk **menampung objek dari subclass**
+- Sebuah metode untuk **berperilaku berbeda** berdasarkan parameter yang diberikan
 
 ---
 
-## 1.3 Konsep Dasar OOP
+## 1.2 Analogi Polimorfisme dalam Kehidupan Nyata
 
-### A. Kelas (Class)
+Untuk memahami polimorfisme, mari kita lihat beberapa analogi dari kehidupan sehari-hari:
 
-**Kelas** adalah **blueprint** atau **cetakan** untuk membuat objek. Kelas mendefinisikan:
+### A. Tombol "Mulai" di Berbagai Perangkat
 
-- **Atribut/Properti** — data yang dimiliki oleh objek
-- **Metode/Fungsi** — perilaku yang dapat dilakukan oleh objek
+| **Perangkat** | **Tombol yang Sama** | **Efek yang Berbeda** |
+|---|---|---|
+| **Televisi** | Tombol "Mulai" | Menyalakan gambar dan suara |
+| **AC (Air Conditioner)** | Tombol "Mulai" | Menyalakan pendingin ruangan |
+| **Mobil** | Tombol "Start" | Menyalakan mesin |
+| **Komputer** | Tombol "Power" | Menyalakan sistem operasi |
 
-**Analogi:** Kelas seperti **cetakan kue**.
+**Pesan:** Tombol yang sama (interface) memberikan perintah yang sama, tetapi setiap perangkat merespons dengan cara yang berbeda sesuai dengan fungsinya masing-masing.
 
-- Cetakan menentukan bentuk kue, bahan-bahan yang dibutuhkan, dan cara membuatnya.
-- Cetakan itu sendiri **bukan** kue — ia adalah **rencana** untuk membuat kue.
+### B. Perintah "Bunyikan Suara" untuk Hewan
+
+| **Hewan** | **Perintah yang Sama** | **Suara yang Berbeda** |
+|---|---|---|
+| **Anjing** | "Bunyikan suara!" | Guk! Guk! |
+| **Kucing** | "Bunyikan suara!" | Meong! Meong! |
+| **Sapi** | "Bunyikan suara!" | Moo! Moo! |
+| **Burung** | "Bunyikan suara!" | Cuit! Cuit! |
+
+**Pesan:** Perintah yang sama menghasilkan perilaku yang berbeda tergantung pada objek yang menerima perintah.
+
+### C. Metode Pembayaran
+
+| **Metode Pembayaran** | **Perintah yang Sama** | **Proses yang Berbeda** |
+|---|---|---|
+| **Kartu Kredit** | `bayar(100000)` | Memotong limit kartu kredit |
+| **QRIS** | `bayar(100000)` | Memotong saldo e-wallet |
+| **Transfer Bank** | `bayar(100000)` | Memindahkan dana antar rekening |
+| **Cash** | `bayar(100000)` | Mengurangi uang tunai |
+
+**Pesan:** Metode `bayar()` yang sama diimplementasikan secara berbeda oleh setiap metode pembayaran.
+
+---
+
+## 1.3 Mengapa Polimorfisme Sangat Penting?
+
+Polimorfisme memberikan banyak manfaat dalam pengembangan perangkat lunak:
+
+| **Manfaat** | **Penjelasan** | **Contoh** |
+|---|---|---|
+| **Fleksibilitas Kode** | Kode dapat bekerja dengan objek dari berbagai tipe tanpa perlu mengetahui detail spesifiknya | Satu fungsi `processPayment()` bisa menangani semua metode pembayaran |
+| **Extensibility** | Kita dapat menambahkan kelas baru tanpa mengubah kode yang sudah ada | Menambah metode `CryptoPayment` tanpa mengubah kode yang sudah ada |
+| **Code Reusability** | Satu fungsi dapat menangani berbagai tipe objek | Satu fungsi `printArea()` untuk semua bentuk geometris |
+| **Abstraksi** | Pengguna kode hanya perlu tahu interface-nya, bukan implementasinya | Pengguna hanya perlu tahu `Shape.area()`, bukan cara menghitungnya |
+| **Mendukung Prinsip Open/Closed** | Kode terbuka untuk ekstensi (kelas baru) tetapi tertutup untuk modifikasi | Menambah `Triangle` tanpa mengubah kode yang memproses `Shape` |
+| **Maintainability** | Kode lebih mudah dipelihara karena lebih modular | Perubahan di satu subclass tidak mempengaruhi yang lain |
+
+---
+
+## 1.4 Dua Jenis Polimorfisme di Kotlin
+
+Polimorfisme di Kotlin (dan OOP secara umum) terbagi menjadi **dua jenis utama**:
+
+| **Jenis** | **Nama Lain** | **Waktu Binding** | **Contoh** |
+|---|---|---|---|
+| **Runtime Polymorphism** | Dynamic Polymorphism | Saat runtime (dinamis) | Method Overriding |
+| **Compile-time Polymorphism** | Static Polymorphism | Saat compile-time (statis) | Method Overloading |
+
+### 1.4.1 Runtime Polymorphism (Method Overriding)
+
+**Method Overriding** terjadi ketika sebuah subclass menyediakan **implementasi spesifik** untuk metode yang sudah didefinisikan di superclass.
 
 ```kotlin
-// Ini adalah KELAS — blueprint untuk objek Mahasiswa
-class Mahasiswa {
-    var nama: String = ""
-    var nim: String = ""
-    var ipk: Double = 0.0
+open class Animal {
+    open fun makeSound() {
+        println("Animal makes a sound")
+    }
+}
 
-    fun tampilkanData() {
-        println("Nama: $nama, NIM: $nim, IPK: $ipk")
+class Dog : Animal() {
+    override fun makeSound() {
+        println("Dog barks: Guk! Guk!")
+    }
+}
+
+class Cat : Animal() {
+    override fun makeSound() {
+        println("Cat meows: Meong! Meong!")
     }
 }
 ```
 
-### B. Objek (Object)
+**Karakteristik Runtime Polymorphism:**
+- Terjadi saat **runtime** (saat program berjalan)
+- Memerlukan **inheritance** (pewarisan)
+- Metode di superclass harus `open`, metode di subclass harus `override`
+- Metode yang dipanggil ditentukan oleh **tipe objek sebenarnya**, bukan tipe variabel
 
-**Objek** adalah **instansi** (realisasi) dari sebuah kelas. Objek adalah **wujud nyata** dari cetakan yang sudah dibuat.
+### 1.4.2 Compile-time Polymorphism (Method Overloading)
 
-**Analogi:** Objek adalah **kue yang sudah jadi** dari cetakan.
-
-- Setiap kue memiliki bentuk yang sama (sesuai cetakan)
-- Tapi setiap kue bisa memiliki topping, warna, atau ukuran yang berbeda
-
-```kotlin
-// Ini adalah OBJEK — realisasi dari kelas Mahasiswa
-val mahasiswa1 = Mahasiswa()
-mahasiswa1.nama = "Budi Santoso"
-mahasiswa1.nim = "TI2024001"
-mahasiswa1.ipk = 3.75
-mahasiswa1.tampilkanData()  // Output: Nama: Budi Santoso, NIM: TI2024001, IPK: 3.75
-```
-
-### C. Atribut (Attribute / Property)
-
-**Atribut** adalah **variabel** yang melekat pada sebuah objek. Atribut menyimpan **keadaan** (state) dari objek.
-
-**Analogi:** Atribut adalah **bahan-bahan kue**.
-
-- Tepung, gula, telur adalah bahan yang mendefinisikan kue
-
-Dalam kode:
+**Method Overloading** terjadi ketika sebuah kelas memiliki **beberapa metode dengan nama yang sama** tetapi **parameter yang berbeda** (jumlah, tipe, atau urutan parameter berbeda).
 
 ```kotlin
-class Mobil {
-    var merek: String = ""      // atribut
-    var warna: String = ""      // atribut
-    var tahun: Int = 0          // atribut
-    var kecepatan: Int = 0      // atribut
-}
-```
-
-### D. Metode (Method / Function)
-
-**Metode** adalah **fungsi** yang melekat pada sebuah objek. Metode mendefinisikan **perilaku** (behavior) dari objek.
-
-**Analogi:** Metode adalah **cara membuat kue**.
-
-- Mencampur, mengocok, memanggang adalah perilaku/aksi
-
-Dalam kode:
-
-```kotlin
-class Mobil {
-    var kecepatan: Int = 0
-
-    // METODE — perilaku objek
-    fun gas() {
-        kecepatan += 10
-        println("Kecepatan: $kecepatan km/jam")
+class Calculator {
+    // Overloading: 3 metode dengan nama yang sama tapi parameter berbeda
+    fun add(a: Int, b: Int): Int {
+        return a + b
     }
 
-    fun rem() {
-        kecepatan -= 5
-        if (kecepatan < 0) kecepatan = 0
-        println("Kecepatan: $kecepatan km/jam")
+    fun add(a: Double, b: Double): Double {
+        return a + b
+    }
+
+    fun add(a: Int, b: Int, c: Int): Int {
+        return a + b + c
     }
 }
 ```
 
+**Karakteristik Compile-time Polymorphism:**
+- Terjadi saat **compile-time** (saat kode dikompilasi)
+- **Tidak** memerlukan inheritance
+- Kompiler memilih metode yang tepat berdasarkan **argumen yang diberikan**
+- Juga dikenal sebagai **static polymorphism** atau **ad-hoc polymorphism**
+
+### 1.4.3 Perbandingan Overriding vs Overloading
+
+| **Aspek** | **Overriding** | **Overloading** |
+|---|---|---|
+| **Hubungan** | Antar kelas (superclass → subclass) | Dalam satu kelas |
+| **Keyword** | `override` | Tidak ada keyword khusus |
+| **Parameter** | Harus **sama persis** dengan superclass | Harus **berbeda** (jumlah/tipe/urutan) |
+| **Return Type** | Harus **sama** atau **subtype** (covariant) | Bisa berbeda |
+| **Waktu Binding** | Runtime (dinamis) | Compile-time (statis) |
+| **Kebutuhan Inheritance** | ✅ Ya | ❌ Tidak |
+| **Metode di Superclass** | Harus `open` | Tidak relevan |
+
 ---
 
-## 1.4 Empat Pilar OOP (The Four Pillars of OOP)
+# BAGIAN 2: POLYMORPHIC REFERENCES (REFERENSI POLIMORFIK)
 
-OOP dibangun di atas **empat pilar utama**:
+## 2.1 Konsep Polymorphic References
 
-| **Pilar** | **Deskripsi** | **Ilustrasi** |
-| --- | --- | --- |
-| **Abstraksi (Abstraction)** | Menyembunyikan detail kompleks dan hanya menampilkan esensi | Seperti mengemudi mobil — Anda tidak perlu tahu cara kerja mesin, cukup tahu cara menggunakan setir dan pedal |
-| **Enkapsulasi (Encapsulation)** | Membungkus data dan metode dalam satu unit, menyembunyikan detail internal | Seperti ATM — Anda bisa mengambil uang tanpa tahu cara kerja mesin di dalamnya |
-| **Pewarisan (Inheritance)** | Membuat kelas baru dari kelas yang sudah ada, mewarisi properti dan metode | Seperti anak mewarisi sifat dari orang tua |
-| **Polimorfisme (Polymorphism)** | Kemampuan objek yang berbeda untuk merespons pesan yang sama dengan cara berbeda | Seperti perintah “bunyikan suara” — anjing menggonggong, kucing mengeong, sapi melenguh |
-
-> **Catatan:** Keempat pilar ini akan kita pelajari secara mendalam di pertemuan-pertemuan berikutnya. Pertemuan 1 fokus pada pemahaman **kelas** dan **objek** sebagai fondasi.
-
----
-
-## 1.5 OOP vs Pemrograman Prosedural
-
-| **Aspek** | **Prosedural** | **OOP** |
-| --- | --- | --- |
-| **Unit utama** | Fungsi/prosedur | Objek |
-| **Data** | Data terpisah dari fungsi | Data dan fungsi terbungkus dalam objek |
-| **Keamanan data** | Rendah (data global mudah diakses) | Tinggi (enkapsulasi melindungi data) |
-| **Reusability** | Sulit (copy-paste kode) | Mudah (inheritance dan komposisi) |
-| **Maintenance** | Sulit untuk program besar | Lebih mudah (modular) |
-| **Contoh** | Program kalkulator sederhana | Aplikasi e-commerce, game, sistem perbankan |
-
-**Contoh Perbandingan Kode:**
-
-**Pendekatan Prosedural (bayangkan dalam bahasa C):**
-
-```c
-// Data terpisah dari fungsi
-struct Mahasiswa {
-    char nama[50];
-    float ipk;
-};
-
-void tampilkanMahasiswa(struct Mahasiswa m) {
-    printf("Nama: %s, IPK: %.2f", m.nama, m.ipk);
-}
-
-int main() {
-    struct Mahasiswa m = {"Budi", 3.75};
-    tampilkanMahasiswa(m);
-    return 0;
-}
-```
-
-**Pendekatan OOP (Kotlin):**
+**Polymorphic references** adalah kemampuan untuk **menyimpan objek dari subclass ke dalam variabel bertipe superclass**. Ini adalah implementasi paling dasar dari polimorfisme.
 
 ```kotlin
-// Data DAN perilaku terbungkus dalam satu kelas
-class Mahasiswa(val nama: String, val ipk: Double) {
-    fun tampilkan() {
-        println("Nama: $nama, IPK: $ipk")
+// Superclass
+open class Animal {
+    open fun makeSound() {
+        println("Animal makes a sound")
+    }
+}
+
+// Subclasses
+class Dog : Animal() {
+    override fun makeSound() {
+        println("Dog barks: Guk! Guk!")
+    }
+}
+
+class Cat : Animal() {
+    override fun makeSound() {
+        println("Cat meows: Meong! Meong!")
     }
 }
 
 fun main() {
-    val m = Mahasiswa("Budi", 3.75)
-    m.tampilkan()  // Objek bertanggung jawab atas datanya sendiri
+    // POLYMORPHIC REFERENCES
+    // Variabel bertipe Animal bisa menampung objek Dog atau Cat
+    val animal1: Animal = Dog()   // Dog disimpan dalam variabel Animal
+    val animal2: Animal = Cat()   // Cat disimpan dalam variabel Animal
+
+    // Meskipun variabel bertipe Animal, metode yang dipanggil adalah dari subclass
+    animal1.makeSound()  // Output: Dog barks: Guk! Guk!
+    animal2.makeSound()  // Output: Cat meows: Meong! Meong!
 }
 ```
 
----
+## 2.2 Mengapa Polymorphic References Penting?
 
-# BAGIAN 2: MENGAPA KOTLIN?
+Polymorphic references memungkinkan kita menulis kode yang **lebih umum dan fleksibel**:
 
-## 2.1 Sejarah Singkat Kotlin
-
-**Kotlin** adalah bahasa pemrograman modern yang dikembangkan oleh **JetBrains** (perusahaan di balik IntelliJ IDEA).
-
-| **Tahun** | **Peristiwa Penting** |
-| --- | --- |
-| **2011** | JetBrains memulai pengembangan Kotlin |
-| **2016** | Kotlin 1.0 resmi dirilis |
-| **2017** | Google mengumumkan Kotlin sebagai bahasa resmi untuk Android (first-class support) |
-| **2019** | Google mendeklarasikan **“Kotlin-first”** untuk Android development |
-| **Sekarang** | Kotlin adalah bahasa pilihan untuk Android, backend, dan multiplatform |
-
-### Mengapa Nama “Kotlin”?
-
-Kotlin dinamai berdasarkan **Pulau Kotlin** di Rusia (dekat St. Petersburg), mirip seperti Java yang dinamai berdasarkan pulau Jawa di Indonesia. JetBrains ingin mengikuti tradisi penamaan bahasa pemrograman berdasarkan pulau.
-
----
-
-## 2.2 Keunggulan Kotlin
-
-### 1. **Interoperabilitas 100% dengan Java**
-
-Kotlin dapat memanggil kode Java, dan Java dapat memanggil kode Kotlin. Ini berarti:
-
-- Anda bisa menggunakan semua library Java yang sudah ada
-- Anda bisa migrasi bertahap dari Java ke Kotlin
-- Tim bisa menggunakan kedua bahasa secara bersamaan
-
-### 2. **Sintaks yang Lebih Ringkas**
-
-Kotlin mengurangi **boilerplate code** (kode berulang yang tidak perlu) hingga 20-30% dibanding Java.
-
-**Java:**
-
-```java
-public class Person {
-    private String name;
-    private int age;
-
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public int getAge() { return age; }
-    public void setAge(int age) { this.age = age; }
+```kotlin
+// Tanpa polymorphic references — kode menjadi kaku
+fun processDog(dog: Dog) {
+    dog.makeSound()
 }
-```
-
-**Kotlin (hanya 1 baris!):**
-
-```kotlin
-class Person(var name: String, var age: Int)
-```
-
-### 3. **Null Safety — Mengakhiri NullPointerException**
-
-NullPointerException (NPE) adalah **musuh nomor 1** programmer Java. Tony Hoare, ilmuwan yang menemukan konsep `null`, menyebutnya sebagai **“kesalahan bernilai satu miliar dolar”**.
-
-Kotlin menyelesaikan masalah ini di **tingkat tipe data**:
-
-- Secara default, variabel **tidak boleh bernilai null**
-- Jika ingin mengizinkan null, harus **secara eksplisit** menyatakannya dengan `?`
-
-```kotlin
-var name: String = "Budi"
-name = null  // ❌ ERROR: Null can not be a value of a non-null type String
-
-var nullableName: String? = "Budi"
-nullableName = null  // ✅ OK, karena kita sudah menyatakan bisa null
-```
-
-### 4. **Fitur Modern Lainnya**
-
-| **Fitur** | **Deskripsi** |
-| --- | --- |
-| **Type Inference** | Kompiler bisa menebak tipe data, tidak perlu selalu menulis tipe secara eksplisit |
-| **Data Class** | Kelas khusus untuk menyimpan data — otomatis menghasilkan `toString()`, `equals()`, `hashCode()` |
-| **Extension Functions** | Menambah fungsi baru ke kelas yang sudah ada tanpa mengubah kode asli |
-| **Coroutines** | Pemrograman asinkron yang sederhana dan efisien |
-| **Lambda & Functional Programming** | Mendukung gaya pemrograman fungsional |
-
----
-
-## 2.3 Kotlin dan Mobile Programming
-
-**Mengapa kami mengajarkan OOP dengan Kotlin?**
-
-Karena **semester depan**, Anda akan belajar **Mobile Programming** menggunakan **Kotlin** untuk pengembangan aplikasi Android.
-
-Dengan menguasai OOP di Kotlin sekarang, Anda akan:
-
-1. **Langsung siap** untuk mata kuliah Mobile Programming — tidak perlu belajar bahasa baru dari nol
-2. **Memahami fondasi OOP** yang sama persis dengan yang akan Anda gunakan di Android
-3. **Menghemat waktu** karena sintaks Kotlin sudah familiar
-
-> **Pesan penting:** OOP adalah **konsep universal**. Prinsip yang Anda pelajari di Kotlin berlaku juga di Java, C++, Python, C#, dan bahasa OOP lainnya. Fokus pada **konsep**, bukan hanya sintaks!
-
----
-
-# BAGIAN 3: PERSIAPAN LINGKUNGAN PENGEMBANGAN
-
-## 3.1 Apa yang Dibutuhkan?
-
-Untuk memulai pemrograman Kotlin, Anda membutuhkan:
-
-| **Komponen** | **Deskripsi** | **Link Download** |
-| --- | --- | --- |
-| **JDK (Java Development Kit)** | Kotlin berjalan di atas JVM (Java Virtual Machine) — JDK adalah fondasinya | [Adoptium](https://adoptium.net/) atau [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) |
-| **IntelliJ IDEA** | IDE (Integrated Development Environment) untuk menulis kode Kotlin | [JetBrains IntelliJ IDEA](https://www.jetbrains.com/idea/download/) (Community Edition — gratis) |
-
-> **Catatan:** Kotlin sudah **ter-bundle** di IntelliJ IDEA dan Android Studio. Tidak perlu instal plugin tambahan!
-
----
-
-## 3.2 Panduan Instalasi JDK
-
-### Langkah 1: Download JDK
-
-1. Buka browser dan kunjungi [https://adoptium.net/](https://adoptium.net/)
-2. Pilih versi **JDK 17** atau **JDK 21** (LTS — Long Term Support)
-3. Pilih sistem operasi Anda (Windows, macOS, atau Linux)
-4. Download installer (.msi untuk Windows, .dmg untuk macOS, .tar.gz untuk Linux)
-
-### Langkah 2: Install JDK
-
-**Windows:**
-
-1. Jalankan file .msi yang sudah didownload
-2. Ikuti petunjuk installer (klik Next > Next > Finish)
-3. Secara default terinstal di `C:\Program Files\Java\jdk-17.x.x`
-
-**macOS:**
-
-1. Buka file .dmg yang sudah didownload
-2. Ikuti petunjuk installer
-
-**Linux (Ubuntu/Debian):**
-
-```bash
-sudo apt update
-sudo apt install openjdk-17-jdk
-```
-
-### Langkah 3: Verifikasi Instalasi
-
-Buka **Command Prompt** (Windows) atau **Terminal** (macOS/Linux) dan ketik:
-
-```bash
-java -version
-```
-
-Jika berhasil, Anda akan melihat output seperti:
-
-```
-openjdk version "17.0.9" 2023-10-17
-OpenJDK Runtime Environment (build 17.0.9+9)
-OpenJDK 64-Bit Server VM (build 17.0.9+9, mixed mode)
-```
-
----
-
-## 3.3 Panduan Instalasi IntelliJ IDEA
-
-### Langkah 1: Download IntelliJ IDEA
-
-1. Buka [https://www.jetbrains.com/idea/download/](https://www.jetbrains.com/idea/download/)
-2. Pilih **Community Edition** (gratis) — **bukan** Ultimate Edition
-3. Download installer sesuai sistem operasi Anda
-
-### Langkah 2: Install IntelliJ IDEA
-
-**Windows:**
-
-1. Jalankan file .exe yang sudah didownload
-2. Ikuti petunjuk installer
-3. Centang opsi **“Add launchers dir to the PATH”** (memudahkan menjalankan dari terminal)
-4. Centang **“.kt”** sebagai file extension yang terasosiasi
-
-**macOS:**
-
-1. Buka file .dmg
-2. Drag IntelliJ IDEA ke folder Applications
-
-**Linux:**
-
-1. Ekstrak file .tar.gz
-2. Jalankan `bin/idea.sh`
-
-### Langkah 3: Verifikasi Kotlin Plugin
-
-1. Buka IntelliJ IDEA
-2. Buka **File → Settings** (Windows/Linux) atau **IntelliJ IDEA → Preferences** (macOS)
-3. Pilih **Plugins**
-4. Cari “Kotlin” — pastikan statusnya **“Installed”** dan **“Enabled”**
-
-> **Catatan:** Kotlin Plugin sudah ter-bundle dan aktif secara default di IntelliJ IDEA versi terbaru.
-
----
-
-## 3.4 Membuat Project Kotlin Pertama
-
-### Langkah 1: Buat Project Baru
-
-1. Buka IntelliJ IDEA
-2. Pada **Welcome Screen**, klik **“New Project”**
-3. Atau dari menu: **File → New → Project**
-
-### Langkah 2: Konfigurasi Project
-
-| **Opsi** | **Pilihan** | **Keterangan** |
-| --- | --- | --- |
-| **Language** | Kotlin | Pilih Kotlin sebagai bahasa utama |
-| **Build System** | IntelliJ | Build system bawaan, tidak perlu download tambahan |
-| **JDK** | Pilih JDK yang sudah diinstal | Jika tidak muncul, klik “Add JDK” dan arahkan ke folder JDK |
-| **Project Name** | `PBO-Project1` | Bebas, tapi usahakan deskriptif |
-| **Location** | Tentukan folder penyimpanan | Misal: `D:\Kuliah\PBO\Project1` |
-| **Add Sample Code** | ✅ Centang | Akan membuat file dengan contoh Hello World |
-
-### Langkah 3: Klik **“Create”**
-
-### Langkah 4: Kenali Struktur Project
-
-```
-PBO-Project1/
-├── .idea/              # Folder konfigurasi IntelliJ IDEA
-├── src/
-│   └── Main.kt         # File kode utama (berisi contoh Hello World)
-└── PBO-Project1.iml    # File konfigurasi project
-```
-
-### Langkah 5: Buka File Main.kt
-
-File `Main.kt` akan berisi kode seperti ini:
-
-```kotlin
-fun main() {
-    println("Hello, World!")
+fun processCat(cat: Cat) {
+    cat.makeSound()
 }
-```
 
----
-
-# BAGIAN 4: HELLO WORLD DAN SINTAKS DASAR KOTLIN
-
-## 4.1 Program Hello World
-
-### Kode Hello World di Kotlin
-
-```kotlin
-fun main() {
-    println("Hello, World!")
-}
-```
-
-### Menjalankan Program
-
-1. Klik **ikon segitiga hijau** (▶) di samping fungsi `main`
-2. Atau klik kanan pada file → **Run ‘MainKt’**
-3. Atau tekan **Ctrl + Shift + F10** (Windows/Linux) atau **Control + Shift + R** (macOS)
-
-### Output yang Diharapkan
-
-```
-Hello, World!
-```
-
----
-
-## 4.2 Anatomi Program Kotlin
-
-Mari kita bedah kode Hello World baris per baris:
-
-```kotlin
-fun main() {
-    println("Hello, World!")
-}
-```
-
-| **Bagian** | **Penjelasan** |
-| --- | --- |
-| `fun` | **Keyword** untuk mendeklarasikan fungsi (function) |
-| `main` | **Nama fungsi** — fungsi khusus yang dieksekusi pertama kali saat program dijalankan |
-| `()` | **Parameter** — fungsi `main` bisa menerima parameter (kita akan bahas nanti) |
-| `{ ... }` | **Body fungsi** — berisi kode yang akan dijalankan |
-| `println(...)` | **Fungsi** untuk mencetak teks ke layar dan **pindah baris** (new line) |
-| `"Hello, World!"` | **String** (teks) — data yang akan dicetak |
-
-### Perbedaan `print()` dan `println()`
-
-```kotlin
-fun main() {
-    print("Hello ")   // Tidak pindah baris
-    print("World!")   // Output: Hello World!
-    println()         // Pindah baris (baris kosong)
-    println("Selamat datang di OOP!")  // Output: Selamat datang di OOP! (dengan new line)
-}
-```
-
-**Output:**
-
-```
-Hello World!
-Selamat datang di OOP!
-```
-
----
-
-## 4.3 Variabel: `val` dan `var`
-
-Variabel adalah **tempat menyimpan data** di dalam program.
-
-### `val` — Immutable (Read-Only / Tidak Bisa Diubah)
-
-`val` digunakan untuk variabel yang **nilainya tidak berubah** setelah diinisialisasi.
-
-```kotlin
-val nama = "Budi Santoso"
-println(nama)  // Output: Budi Santoso
-
-nama = "Siti Rahayu"  // ❌ ERROR: Val cannot be reassigned
-```
-
-### `var` — Mutable (Bisa Diubah)
-
-`var` digunakan untuk variabel yang **nilainya bisa berubah**.
-
-```kotlin
-var umur = 20
-println(umur)  // Output: 20
-
-umur = 21      // ✅ OK, bisa diubah
-println(umur)  // Output: 21
-```
-
-### Aturan Sederhana
-
-> **“Gunakan `val` secara default. Gunakan `var` hanya jika benar-benar perlu diubah.”** — Ini adalah praktik terbaik (best practice) dalam Kotlin.
-
----
-
-## 4.4 Type Inference (Penebakan Tipe Data)
-
-Kotlin secara otomatis **menebak** tipe data variabel berdasarkan nilai yang diberikan.
-
-```kotlin
-val nama = "Budi"      // Kotlin menebak: String
-var umur = 20          // Kotlin menebak: Int
-val ipk = 3.75         // Kotlin menebak: Double
-var isLulus = true     // Kotlin menebak: Boolean
-```
-
-### Menulis Tipe Data Secara Eksplisit
-
-Anda juga bisa menulis tipe data secara **eksplisit** (jelas):
-
-```kotlin
-val nama: String = "Budi"
-var umur: Int = 20
-val ipk: Double = 3.75
-var isLulus: Boolean = true
-```
-
-### Tipe Data Dasar di Kotlin
-
-| **Tipe Data** | **Deskripsi** | **Contoh** |
-| --- | --- | --- |
-| `String` | Teks/kata-kata | `"Halo"`, `"Budi"` |
-| `Int` | Bilangan bulat | `10`, `-5`, `0` |
-| `Double` | Bilangan desimal | `3.14`, `-2.5`, `0.0` |
-| `Boolean` | Nilai benar/salah | `true`, `false` |
-| `Char` | Satu karakter | `'A'`, `'5'`, `'$'` |
-
----
-
-## 4.5 Null Safety — Keamanan dari Null
-
-### Masalah Null di Java
-
-Di Java, **semua** variabel bisa bernilai `null`:
-
-```java
-String nama = null;   // OK di Java
-int panjang = nama.length();  // ❌ ERROR: NullPointerException (runtime crash!)
-```
-
-Program akan **crash** di saat runtime (saat program berjalan) — ini sangat berbahaya!
-
-### Solusi Kotlin: Null Safety
-
-Di Kotlin, secara default variabel **tidak boleh null**.
-
-```kotlin
-var nama: String = "Budi"
-nama = null  // ❌ ERROR: Null can not be a value of a non-null type String
-```
-
-### Variabel Nullable (Boleh Null)
-
-Jika Anda **benar-benar** membutuhkan variabel yang bisa bernilai `null`, Anda harus menyatakannya dengan **`?`**.
-
-```kotlin
-var nama: String? = "Budi"
-nama = null  // ✅ OK, karena sudah dinyatakan nullable
-```
-
-### Cara Aman Mengakses Variabel Nullable
-
-**1. Safe Call (`?.`)** — Memanggil metode hanya jika variabel tidak null.
-
-```kotlin
-val nama: String? = "Budi"
-val panjang = nama?.length  // Jika nama null, panjang = null (tidak crash!)
-println(panjang)  // Output: 4
-```
-
-**2. Elvis Operator (`?:`)** — Memberikan nilai default jika variabel null.
-
-```kotlin
-val nama: String? = null
-val panjang = nama?.length ?: 0  // Jika nama null, panjang = 0
-println(panjang)  // Output: 0
-```
-
-**3. Not-Null Assertion (`!!`)** — Memaksa Kotlin untuk menganggap variabel tidak null (HATI-HATI!).
-
-```kotlin
-val nama: String? = "Budi"
-val panjang = nama!!.length  // Yakin 100% tidak null
-println(panjang)  // Output: 4
-```
-
-> **⚠️ PERINGATAN:** Gunakan `!!` hanya jika Anda **100% yakin** variabel tidak null. Jika ternyata null, program akan crash!
-
----
-
-## 4.6 Fungsi (Function) di Kotlin
-
-### Mendeklarasikan Fungsi
-
-Gunakan keyword **`fun`** untuk mendeklarasikan fungsi.
-
-```kotlin
-fun sapa(nama: String) {
-    println("Halo, $nama!")
+// Dengan polymorphic references — satu fungsi untuk semua Animal
+fun processAnimal(animal: Animal) {
+    animal.makeSound()  // Bisa menerima Animal, Dog, Cat, atau subclass lainnya
 }
 
 fun main() {
-    sapa("Budi")  // Output: Halo, Budi!
-}
-```
-
-### Fungsi dengan Nilai Balik (Return Value)
-
-```kotlin
-fun tambah(a: Int, b: Int): Int {
-    return a + b
-}
-
-fun main() {
-    val hasil = tambah(5, 3)
-    println(hasil)  // Output: 8
-}
-```
-
-### Single-Expression Function (Fungsi Satu Baris)
-
-Jika fungsi hanya terdiri dari satu ekspresi, bisa ditulis lebih ringkas:
-
-```kotlin
-// Cara panjang
-fun tambah(a: Int, b: Int): Int {
-    return a + b
-}
-
-// Cara ringkas (single-expression)
-fun tambah(a: Int, b: Int) = a + b
-```
-
-### Fungsi dengan Parameter Default
-
-Kotlin mendukung **nilai default** untuk parameter:
-
-```kotlin
-fun sapa(nama: String, sapaan: String = "Halo") {
-    println("$sapaan, $nama!")
-}
-
-fun main() {
-    sapa("Budi")           // Output: Halo, Budi!
-    sapa("Siti", "Assalamu'alaikum")  // Output: Assalamu'alaikum, Siti!
-}
-```
-
----
-
-## 4.7 String Template (Interpolasi String)
-
-Di Kotlin, Anda bisa menyisipkan nilai variabel ke dalam string menggunakan **`$`**.
-
-```kotlin
-val nama = "Budi"
-val umur = 20
-
-// Tanpa string template
-println("Nama saya " + nama + ", umur saya " + umur + " tahun.")
-
-// Dengan string template (lebih bersih!)
-println("Nama saya $nama, umur saya $umur tahun.")
-```
-
-### Ekspresi dalam String Template
-
-Untuk ekspresi yang lebih kompleks, gunakan **`${...}`**:
-
-```kotlin
-val a = 5
-val b = 3
-println("Hasil $a + $b = ${a + b}")  // Output: Hasil 5 + 3 = 8
-```
-
----
-
-## 4.8 Input dari Pengguna (User Input)
-
-Untuk membaca input dari pengguna, gunakan fungsi **`readln()`**.
-
-```kotlin
-fun main() {
-    println("Siapa nama Anda?")
-    val nama = readln()  // Membaca input dari pengguna
-    println("Halo, $nama! Selamat belajar OOP!")
-}
-```
-
-### Membaca Input dengan Tipe Data Tertentu
-
-```kotlin
-fun main() {
-    println("Masukkan angka pertama:")
-    val a = readln().toInt()  // Mengubah String menjadi Int
-
-    println("Masukkan angka kedua:")
-    val b = readln().toInt()
-
-    println("Hasil penjumlahan: ${a + b}")
-}
-```
-
-> **⚠️ PERINGATAN:** Fungsi `toInt()` akan error (crash) jika pengguna memasukkan teks yang bukan angka. Di pertemuan mendatang kita akan belajar cara menangani error ini (exception handling).
-
----
-
-# BAGIAN 5: KELAS DAN OBJEK DI KOTLIN
-
-## 5.1 Mendeklarasikan Kelas
-
-Di Kotlin, kelas dideklarasikan dengan keyword **`class`**.
-
-```kotlin
-// Kelas kosong (minimal)
-class Mahasiswa
-
-// Kelas dengan properti
-class Mahasiswa {
-    var nim: String = ""
-    var nama: String = ""
-    var jurusan: String = ""
-    var ipk: Double = 0.0
-}
-```
-
----
-
-## 5.2 Properti di Kelas
-
-Properti adalah **variabel** yang menjadi bagian dari kelas.
-
-```kotlin
-class Mobil {
-    var merek: String = ""
-    var model: String = ""
-    var tahun: Int = 0
-    var warna: String = ""
-    var kecepatan: Int = 0
-}
-```
-
-### Properti dengan Nilai Default
-
-```kotlin
-class Mobil {
-    var merek: String = "Toyota"
-    var model: String = "Avanza"
-    var tahun: Int = 2024
-    var warna: String = "Putih"
-    var kecepatan: Int = 0
-}
-```
-
----
-
-## 5.3 Metode di Kelas
-
-Metode adalah **fungsi** yang menjadi bagian dari kelas.
-
-```kotlin
-class Mobil {
-    var merek: String = "Toyota"
-    var model: String = "Avanza"
-    var kecepatan: Int = 0
-
-    // METODE — perilaku objek
-    fun gas() {
-        kecepatan += 10
-        println("Mobil melaju dengan kecepatan $kecepatan km/jam")
-    }
-
-    fun rem() {
-        kecepatan -= 5
-        if (kecepatan < 0) kecepatan = 0
-        println("Mobil melambat, kecepatan $kecepatan km/jam")
-    }
-
-    fun tampilkanInfo() {
-        println("Merek: $merek")
-        println("Model: $model")
-        println("Kecepatan: $kecepatan km/jam")
+    val animals: List<Animal> = listOf(Dog(), Cat(), Dog())
+    for (animal in animals) {
+        processAnimal(animal)  // Satu fungsi menangani semua jenis Animal
     }
 }
 ```
 
----
-
-## 5.4 Membuat Objek (Instansiasi)
-
-Di Kotlin, objek dibuat **tanpa keyword `new`** (berbeda dengan Java).
+## 2.3 Contoh Lengkap: Polymorphic Array/List
 
 ```kotlin
-fun main() {
-    // Membuat objek dari kelas Mobil
-    val mobilSaya = Mobil()
-
-    // Mengakses properti
-    mobilSaya.merek = "Honda"
-    mobilSaya.model = "Civic"
-    mobilSaya.kecepatan = 0
-
-    // Memanggil metode
-    mobilSaya.tampilkanInfo()
-    mobilSaya.gas()
-    mobilSaya.gas()
-    mobilSaya.rem()
-    mobilSaya.tampilkanInfo()
+open class Shape {
+    open fun area(): Double = 0.0
+    open fun name(): String = "Shape"
 }
-```
 
-**Output:**
+class Circle(val radius: Double) : Shape() {
+    override fun area(): Double = Math.PI * radius * radius
+    override fun name(): String = "Circle"
+}
 
-```
-Merek: Honda
-Model: Civic
-Kecepatan: 0 km/jam
-Mobil melaju dengan kecepatan 10 km/jam
-Mobil melaju dengan kecepatan 20 km/jam
-Mobil melambat, kecepatan 15 km/jam
-Merek: Honda
-Model: Civic
-Kecepatan: 15 km/jam
-```
+class Rectangle(val width: Double, val height: Double) : Shape() {
+    override fun area(): Double = width * height
+    override fun name(): String = "Rectangle"
+}
 
----
+class Triangle(val base: Double, val height: Double) : Shape() {
+    override fun area(): Double = 0.5 * base * height
+    override fun name(): String = "Triangle"
+}
 
-## 5.5 Konstruktor (Constructor)
+fun main() {
+    // Polymorphic list — List berisi berbagai subclass Shape
+    val shapes: List<Shape> = listOf(
+        Circle(5.0),
+        Rectangle(4.0, 6.0),
+        Triangle(3.0, 4.0),
+        Circle(3.0)
+    )
 
-Konstruktor adalah fungsi khusus yang **dipanggil saat objek dibuat** untuk menginisialisasi properti.
-
-### Primary Constructor
-
-Di Kotlin, primary constructor ditulis **langsung di header kelas**.
-
-```kotlin
-class Mahasiswa(val nim: String, val nama: String, var ipk: Double) {
-    fun tampilkan() {
-        println("NIM: $nim, Nama: $nama, IPK: $ipk")
+    // Satu loop menangani semua jenis Shape
+    for (shape in shapes) {
+        println("${shape.name()} area: ${shape.area()}")
     }
-}
-
-fun main() {
-    // Membuat objek dengan constructor
-    val mhs = Mahasiswa("TI2024001", "Budi Santoso", 3.75)
-    mhs.tampilkan()  // Output: NIM: TI2024001, Nama: Budi Santoso, IPK: 3.75
-}
-```
-
-### Properti `val` vs `var` di Constructor
-
-| **Keyword** | **Keterangan** |
-| --- | --- |
-| `val` di constructor | Properti **read-only** — tidak bisa diubah setelah objek dibuat |
-| `var` di constructor | Properti **mutable** — bisa diubah setelah objek dibuat |
-
-```kotlin
-class Mahasiswa(val nim: String, val nama: String, var ipk: Double)
-
-fun main() {
-    val mhs = Mahasiswa("TI2024001", "Budi", 3.75)
-
-    // ✅ Bisa mengubah ipk (var)
-    mhs.ipk = 3.80
-
-    // ❌ Tidak bisa mengubah nim (val)
-    // mhs.nim = "TI2024002"  // ERROR!
+    // Output:
+    // Circle area: 78.53981633974483
+    // Rectangle area: 24.0
+    // Triangle area: 6.0
+    // Circle area: 28.274333882308138
 }
 ```
 
-### Init Block (Blok Inisialisasi)
+---
 
-`init` block dieksekusi **saat objek dibuat**, sebelum properti lainnya diakses.
+# BAGIAN 3: TYPE CHECKS DAN CASTING
+
+## 3.1 Operator `is` dan `!is` untuk Type Checking
+
+Gunakan operator **`is`** (dan **`!is`** untuk negasi) untuk memeriksa apakah sebuah objek memiliki tipe tertentu.
 
 ```kotlin
-class Mahasiswa(val nim: String, val nama: String, var ipk: Double) {
-    init {
-        println("Objek Mahasiswa dibuat!")
-        println("NIM: $nim, Nama: $nama")
-        if (ipk < 0.0 || ipk > 4.0) {
-            println("⚠️ PERINGATAN: IPK tidak valid!")
+open class Animal
+class Dog : Animal() {
+    fun bark() = println("Guk! Guk!")
+}
+class Cat : Animal() {
+    fun meow() = println("Meong! Meong!")
+}
+
+fun main() {
+    val animal: Animal = Dog()
+
+    // is — memeriksa apakah objek memiliki tipe tertentu
+    println(animal is Dog)   // Output: true
+    println(animal is Cat)   // Output: false
+    println(animal is Animal) // Output: true
+
+    // !is — memeriksa apakah objek TIDAK memiliki tipe tertentu
+    println(animal !is Cat)  // Output: true
+}
+```
+
+### Penggunaan `is` dengan `when`
+
+```kotlin
+fun handleAnimal(animal: Animal) {
+    when {
+        animal is Dog -> {
+            println("Ini adalah Dog")
+            animal.bark()  // Smart cast — otomatis ke Dog
+        }
+        animal is Cat -> {
+            println("Ini adalah Cat")
+            animal.meow()  // Smart cast — otomatis ke Cat
+        }
+        else -> {
+            println("Animal tidak dikenal")
         }
     }
+}
 
-    fun tampilkan() {
-        println("NIM: $nim, Nama: $nama, IPK: $ipk")
+fun main() {
+    handleAnimal(Dog())   // Output: Ini adalah Dog \n Guk! Guk!
+    handleAnimal(Cat())   // Output: Ini adalah Cat \n Meong! Meong!
+}
+```
+
+## 3.2 Smart Casting — Fitur Andalan Kotlin
+
+**Smart casting** adalah fitur Kotlin di mana kompiler **secara otomatis melakukan casting** setelah pemeriksaan tipe dengan `is` atau `!is`.
+
+```kotlin
+fun demoSmartCasting(obj: Any) {
+    // Sebelum pemeriksaan, obj bertipe Any
+    // obj.length  // ❌ ERROR: Any tidak punya property length
+
+    if (obj is String) {
+        // Setelah pemeriksaan, obj secara otomatis di-cast ke String
+        println(obj.length)  // ✅ OK — smart cast ke String
+        println(obj.uppercase())
     }
+
+    if (obj !is Int) {
+        // Jika obj BUKAN Int, kita tidak bisa menggunakan operasi Int
+        return
+    }
+    // Setelah return, kompiler tahu bahwa obj PASTI Int
+    println(obj + 10)  // ✅ OK — smart cast ke Int
+}
+```
+
+**Smart casting bekerja di berbagai struktur kontrol:**
+
+```kotlin
+// 1. if expression
+fun process(value: Any) {
+    if (value is String) {
+        println(value.length)  // Smart cast ke String
+    }
+}
+
+// 2. when expression
+fun describe(value: Any): String {
+    return when (value) {
+        is String -> "String dengan panjang ${value.length}"  // Smart cast
+        is Int -> "Integer: ${value + 10}"  // Smart cast
+        is Boolean -> "Boolean: ${if (value) "true" else "false"}"  // Smart cast
+        else -> "Tipe tidak dikenal"
+    }
+}
+
+// 3. while loop — smart cast setelah kondisi terpenuhi
+fun processWhile(value: Any) {
+    while (value is String) {
+        println(value.length)  // Smart cast ke String
+        // ...
+    }
+}
+
+// 4. Boolean variable — smart cast dengan boolean condition
+fun processWithBoolean(value: Any) {
+    val isString = value is String
+    if (isString) {
+        println(value.length)  // Smart cast ke String
+    }
+}
+```
+
+## 3.3 Upcasting — Casting ke Superclass
+
+**Upcasting** adalah proses mengkonversi objek dari subclass ke superclass. Ini **selalu aman** karena setiap objek subclass adalah juga objek superclass.
+
+```kotlin
+open class Animal
+class Dog : Animal()
+
+fun main() {
+    val dog = Dog()
+
+    // Upcasting — otomatis dan aman
+    val animal: Animal = dog  // Implicit upcasting
+
+    // Explicit upcasting (tidak perlu, tapi bisa)
+    val animal2 = dog as Animal
+}
+```
+
+**Upcasting di Kotlin terjadi secara otomatis** — Anda tidak perlu melakukan casting secara eksplisit.
+
+## 3.4 Downcasting — Casting ke Subclass
+
+**Downcasting** adalah proses mengkonversi objek dari superclass ke subclass. Ini **tidak selalu aman** karena tidak semua objek superclass adalah subclass tertentu.
+
+```kotlin
+open class Animal
+class Dog : Animal() {
+    fun bark() = println("Guk! Guk!")
+}
+class Cat : Animal() {
+    fun meow() = println("Meong! Meong!")
+}
+
+fun main() {
+    val animal: Animal = Dog()  // Upcasting (otomatis)
+
+    // ❌ Tanpa pengecekan — bisa crash!
+    // val dog = animal as Dog  // Bisa berhasil, tapi berbahaya
+
+    // ✅ Dengan pengecekan — aman
+    if (animal is Dog) {
+        val dog = animal  // Smart cast — otomatis ke Dog
+        dog.bark()
+    }
+}
+```
+
+## 3.5 Operator Casting: `as` dan `as?`
+
+Untuk casting eksplisit, Kotlin menyediakan dua operator:
+
+| **Operator** | **Deskripsi** | **Perilaku jika gagal** |
+|---|---|---|
+| `as` | Unsafe cast | **Throw ClassCastException** (crash) |
+| `as?` | Safe cast | **Return null** (tidak crash) |
+
+```kotlin
+fun main() {
+    val obj: Any = "Hello"
+
+    // === UNSAFE CAST (as) ===
+    val str1: String = obj as String  // ✅ Berhasil
+    // val num1: Int = obj as Int     // ❌ ClassCastException!
+
+    // === SAFE CAST (as?) ===
+    val str2: String? = obj as? String  // ✅ Berhasil: "Hello"
+    val num2: Int? = obj as? Int        // ✅ Aman: null (tidak crash)
+
+    println(str2)  // Output: Hello
+    println(num2)  // Output: null
+
+    // === as? dengan Elvis Operator ===
+    val num3: Int = obj as? Int ?: 0  // Jika gagal, gunakan default 0
+    println(num3)  // Output: 0
+}
+```
+
+**Best Practice:** Gunakan `as?` daripada `as` kecuali Anda **100% yakin** casting akan berhasil.
+
+---
+
+# BAGIAN 4: SEALED CLASS — CLOSED POLYMORPHISM
+
+## 4.1 Apa itu Sealed Class?
+
+**Sealed class** adalah kelas yang **membatasi hierarki subclass** — semua subclass dari sealed class harus dideklarasikan **dalam file yang sama** dengan sealed class tersebut.
+
+> **Closed Polymorphism:** Semua subclass dari sealed class **diketahui pada saat compile time**.
+
+## 4.2 Mengapa Sealed Class?
+
+| **Keuntungan Sealed Class** | **Penjelasan** |
+|---|---|
+| **Ekshaustif `when`** | Compiler memastikan semua kemungkinan ditangani di `when` expression |
+| **Type Safety** | Tidak ada subclass yang tidak terduga |
+| **Mewakili State Terbatas** | Cocok untuk mewakili state yang terbatas (Success, Loading, Error) |
+| **Closed APIs** | Membuat API publik yang robust untuk library |
+| **Controlled Inheritance** | Inheritance yang terkontrol dan terbatas |
+
+## 4.3 Sintaks Sealed Class
+
+```kotlin
+// Sealed class — semua subclass harus di file yang sama
+sealed class Result {
+    data class Success(val data: String) : Result()
+    data class Error(val message: String) : Result()
+    object Loading : Result()
+}
+
+// Subclass bisa di file yang sama (di luar sealed class)
+class CustomResult : Result()  // Juga boleh
+
+// ❌ ERROR: Subclass di file berbeda tidak diizinkan
+// class AnotherResult : Result()  // Tidak bisa di file lain
+```
+
+### Sealed Interface (Kotlin 1.5+)
+
+Kotlin 1.5+ mendukung **sealed interface**:
+
+```kotlin
+sealed interface PaymentStatus {
+    object Success : PaymentStatus
+    data class Failed(val reason: String) : PaymentStatus
+    object Pending : PaymentStatus
+}
+
+// Sebuah class bisa mengimplementasikan multiple sealed interfaces
+sealed interface Printable
+sealed interface Drawable
+
+class Document : Printable, Drawable  // Bisa mengimplementasikan keduanya
+```
+
+## 4.4 Sealed Class vs Enum Class
+
+| **Aspek** | **Sealed Class** | **Enum Class** |
+|---|---|---|
+| **Subclass** | Bisa memiliki subclass yang berbeda | Semua instance adalah konstanta dari enum yang sama |
+| **State** | Setiap subclass bisa memiliki state berbeda | Semua konstanta memiliki state yang sama |
+| **Inheritance** | Subclass bisa mewarisi dari sealed class | Enum tidak bisa diwarisi |
+| **Multiple Instances** | Setiap subclass bisa punya banyak instance | Setiap konstanta hanya satu instance |
+| **Kapan Gunakan** | Representasi state yang kompleks | Representasi konstanta sederhana |
+
+```kotlin
+// Enum — untuk konstanta sederhana
+enum class Status {
+    SUCCESS, ERROR, LOADING
+}
+
+// Sealed Class — untuk state dengan data berbeda
+sealed class NetworkState {
+    data class Success(val data: String) : NetworkState()
+    data class Error(val error: String) : NetworkState()
+    object Loading : NetworkState()
+}
+```
+
+## 4.5 Sealed Class dengan `when` Ekshaustif
+
+Keunggulan utama sealed class adalah **`when` expression yang ekshaustif** — compiler memastikan semua kemungkinan ditangani.
+
+```kotlin
+sealed class Result {
+    data class Success(val data: String) : Result()
+    data class Error(val message: String) : Result()
+    object Loading : Result()
+}
+
+fun handleResult(result: Result): String {
+    // Compiler memastikan semua kemungkinan ditangani
+    return when (result) {
+        is Result.Success -> "✅ Success: ${result.data}"
+        is Result.Error -> "❌ Error: ${result.message}"
+        Result.Loading -> "⏳ Loading..."
+        // Tidak perlu else — semua kemungkinan sudah tercakup!
+    }
+}
+
+fun main() {
+    println(handleResult(Result.Success("Data berhasil")))
+    println(handleResult(Result.Error("Terjadi kesalahan")))
+    println(handleResult(Result.Loading))
 }
 ```
 
 ---
 
-## 5.6 Contoh Lengkap: Sistem Manajemen Mahasiswa
+# BAGIAN 5: STUDI KASUS — SISTEM PEMBAYARAN DENGAN POLIMORFISME
 
-Mari kita buat program lengkap yang menggabungkan semua konsep yang sudah dipelajari.
+## 5.1 Analisis Kebutuhan
 
-### File: Mahasiswa.kt
+Kita akan membangun sistem pembayaran yang mengimplementasikan semua konsep polimorfisme.
+
+| **Metode Pembayaran** | **Atribut** | **Perilaku** |
+|---|---|---|
+| **Payment (Base)** | amount: Double | processPayment(): PaymentStatus, getFee(): Double |
+| **CreditCard** | cardNumber, expiryDate, cvv | Fee = 2% dari amount |
+| **QRIS** | qrCode, merchantId | Fee = 0.5% dari amount |
+| **BankTransfer** | bankName, accountNumber | Fee = 1% dari amount (minimal Rp 5.000) |
+| **E-Wallet** | walletId, phoneNumber | Fee = 1.5% dari amount |
+
+## 5.2 Implementasi Lengkap
 
 ```kotlin
 /**
- * Kelas Mahasiswa merepresentasikan data mahasiswa
- *
- * @property nim Nomor Induk Mahasiswa (tidak bisa diubah setelah dibuat)
- * @property nama Nama lengkap mahasiswa (tidak bisa diubah setelah dibuat)
- * @property jurusan Jurusan mahasiswa (bisa diubah)
- * @property ipk Indeks Prestasi Kumulatif (bisa diubah)
+ * ============================================================
+ * SISTEM PEMBAYARAN DENGAN POLIMORFISME
+ * ============================================================
+ * Demonstrasi:
+ * 1. Polymorphic references
+ * 2. Method overriding (runtime polymorphism)
+ * 3. Smart casting dengan is
+ * 4. Sealed class untuk status pembayaran
+ * 5. as? untuk safe casting
+ * ============================================================
  */
-class Mahasiswa(
-    val nim: String,
-    val nama: String,
-    var jurusan: String,
-    var ipk: Double
+
+/**
+ * SEALED CLASS: PaymentStatus
+ * Mewakili status pembayaran dengan closed polymorphism
+ */
+sealed class PaymentStatus {
+    data class Success(val transactionId: String, val timestamp: String) : PaymentStatus()
+    data class Failed(val reason: String, val errorCode: Int) : PaymentStatus()
+    object Pending : PaymentStatus()
+
+    // Helper untuk menampilkan status
+    fun display(): String {
+        return when (this) {
+            is Success -> "✅ Berhasil (ID: $transactionId, Waktu: $timestamp)"
+            is Failed -> "❌ Gagal: $reason (Kode: $errorCode)"
+            Pending -> "⏳ Menunggu pemrosesan..."
+        }
+    }
+}
+
+/**
+ * KELAS INDUK: Payment
+ * Semua metode pembayaran mewarisi dari kelas ini
+ */
+open class Payment(
+    open val amount: Double,
+    open val customerName: String
 ) {
-    // Blok inisialisasi - dijalankan saat objek dibuat
     init {
-        println("✅ Mahasiswa $nama dengan NIM $nim berhasil didaftarkan!")
+        println("💳 Pembayaran sebesar Rp ${formatRupiah(amount)} atas nama $customerName")
+    }
 
-        // Validasi IPK
-        if (ipk < 0.0 || ipk > 4.0) {
-            println("⚠️ PERINGATAN: IPK $ipk tidak valid! IPK harus antara 0.0 - 4.0")
+    // Metode open — bisa di-override oleh subclass
+    open fun getFee(): Double {
+        return 0.0  // Default: tidak ada biaya
+    }
+
+    // Metode open — bisa di-override oleh subclass
+    open fun processPayment(): PaymentStatus {
+        println("⚠️ Metode pembayaran tidak didukung")
+        return PaymentStatus.Failed("Metode tidak didukung", 400)
+    }
+
+    // Metode final — tidak bisa di-override
+    final fun getTotalAmount(): Double {
+        return amount + getFee()
+    }
+
+    protected fun formatRupiah(nominal: Double): String {
+        val str = nominal.toLong().toString()
+        val builder = StringBuilder()
+        var count = 0
+        for (i in str.length - 1 downTo 0) {
+            builder.insert(0, str[i])
+            count++
+            if (count % 3 == 0 && i > 0) {
+                builder.insert(0, ".")
+            }
         }
-    }
-
-    /**
-     * Menampilkan seluruh data mahasiswa
-     */
-    fun tampilkan() {
-        println("=" .repeat(50))
-        println("📋 DATA MAHASISWA")
-        println("=" .repeat(50))
-        println("NIM     : $nim")
-        println("Nama    : $nama")
-        println("Jurusan : $jurusan")
-        println("IPK     : $ipk")
-        println("Predikat: ${hitungPredikat()}")
-        println("=" .repeat(50))
-    }
-
-    /**
-     * Menghitung predikat kelulusan berdasarkan IPK
-     *
-     * @return String predikat kelulusan
-     */
-    fun hitungPredikat(): String {
-        return when {
-            ipk >= 3.5 -> "🏆 Cumlaude (Dengan Pujian)"
-            ipk >= 3.0 -> "⭐ Sangat Memuaskan"
-            ipk >= 2.5 -> "✅ Memuaskan"
-            ipk >= 2.0 -> "📖 Cukup"
-            else -> "📚 Perlu Perbaikan"
-        }
-    }
-
-    /**
-     * Memperbarui IPK mahasiswa
-     *
-     * @param ipkBaru Nilai IPK baru (harus antara 0.0 - 4.0)
-     * @return true jika berhasil, false jika gagal
-     */
-    fun updateIpk(ipkBaru: Double): Boolean {
-        return if (ipkBaru in 0.0..4.0) {
-            ipk = ipkBaru
-            println("✅ IPK $nama berhasil diperbarui menjadi $ipkBaru")
-            true
-        } else {
-            println("❌ Gagal: IPK $ipkBaru tidak valid (harus 0.0 - 4.0)")
-            false
-        }
-    }
-
-    /**
-     * Mengecek apakah mahasiswa lulus (IPK >= 2.0)
-     */
-    fun isLulus(): Boolean {
-        return ipk >= 2.0
+        return builder.toString()
     }
 }
 
 /**
- * Fungsi utama program
+ * SUBCLASS 1: CreditCardPayment
+ * Pembayaran dengan kartu kredit
+ */
+class CreditCardPayment(
+    amount: Double,
+    customerName: String,
+    val cardNumber: String,
+    val expiryDate: String,
+    val cvv: String
+) : Payment(amount, customerName) {
+
+    override fun getFee(): Double {
+        return amount * 0.02  // Biaya 2%
+    }
+
+    override fun processPayment(): PaymentStatus {
+        if (cardNumber.length < 16) {
+            return PaymentStatus.Failed("Nomor kartu tidak valid", 401)
+        }
+        if (cvv.length != 3) {
+            return PaymentStatus.Failed("CVV tidak valid", 402)
+        }
+
+        println("💳 Memproses pembayaran kartu kredit...")
+        println("   Nomor: ${maskCardNumber(cardNumber)}")
+        println("   Total: Rp ${formatRupiah(getTotalAmount())} (termasuk biaya Rp ${formatRupiah(getFee())})")
+
+        return PaymentStatus.Success(
+            transactionId = "CC-${System.currentTimeMillis()}",
+            timestamp = java.time.LocalDateTime.now().toString()
+        )
+    }
+
+    private fun maskCardNumber(number: String): String {
+        return "****-****-****-${number.takeLast(4)}"
+    }
+}
+
+/**
+ * SUBCLASS 2: QRISPayment
+ * Pembayaran dengan QRIS
+ */
+class QRISPayment(
+    amount: Double,
+    customerName: String,
+    val qrCode: String,
+    val merchantId: String
+) : Payment(amount, customerName) {
+
+    override fun getFee(): Double {
+        return amount * 0.005  // Biaya 0.5%
+    }
+
+    override fun processPayment(): PaymentStatus {
+        if (qrCode.length < 10) {
+            return PaymentStatus.Failed("Kode QR tidak valid", 403)
+        }
+
+        println("📱 Memproses pembayaran QRIS...")
+        println("   Merchant: $merchantId")
+        println("   Total: Rp ${formatRupiah(getTotalAmount())} (termasuk biaya Rp ${formatRupiah(getFee())})")
+
+        return PaymentStatus.Success(
+            transactionId = "QR-${System.currentTimeMillis()}",
+            timestamp = java.time.LocalDateTime.now().toString()
+        )
+    }
+}
+
+/**
+ * SUBCLASS 3: BankTransferPayment
+ * Pembayaran transfer bank
+ */
+class BankTransferPayment(
+    amount: Double,
+    customerName: String,
+    val bankName: String,
+    val accountNumber: String
+) : Payment(amount, customerName) {
+
+    override fun getFee(): Double {
+        val fee = amount * 0.01  // 1%
+        return maxOf(fee, 5000.0)  // Minimal Rp 5.000
+    }
+
+    override fun processPayment(): PaymentStatus {
+        if (accountNumber.length < 8) {
+            return PaymentStatus.Failed("Nomor rekening tidak valid", 404)
+        }
+
+        println("🏦 Memproses transfer bank...")
+        println("   Bank: $bankName")
+        println("   Rekening: $accountNumber")
+        println("   Total: Rp ${formatRupiah(getTotalAmount())} (termasuk biaya Rp ${formatRupiah(getFee())})")
+
+        return PaymentStatus.Pending
+    }
+}
+
+/**
+ * SUBCLASS 4: EWalletPayment
+ * Pembayaran dengan e-wallet
+ */
+class EWalletPayment(
+    amount: Double,
+    customerName: String,
+    val walletId: String,
+    val phoneNumber: String,
+    val provider: String  // "GoPay", "OVO", "DANA"
+) : Payment(amount, customerName) {
+
+    override fun getFee(): Double {
+        return amount * 0.015  // Biaya 1.5%
+    }
+
+    override fun processPayment(): PaymentStatus {
+        if (walletId.length < 5) {
+            return PaymentStatus.Failed("ID wallet tidak valid", 405)
+        }
+
+        println("📱 Memproses pembayaran $provider...")
+        println("   Wallet: $walletId")
+        println("   Phone: $phoneNumber")
+        println("   Total: Rp ${formatRupiah(getTotalAmount())} (termasuk biaya Rp ${formatRupiah(getFee())})")
+
+        return PaymentStatus.Success(
+            transactionId = "EW-${System.currentTimeMillis()}",
+            timestamp = java.time.LocalDateTime.now().toString()
+        )
+    }
+}
+
+/**
+ * KELAS: PaymentProcessor
+ * Memproses berbagai jenis pembayaran secara polimorfik
+ */
+class PaymentProcessor {
+    private val payments = mutableListOf<Payment>()
+    private val history = mutableListOf<PaymentStatus>()
+
+    fun addPayment(payment: Payment) {
+        payments.add(payment)
+        println("✅ Pembayaran ditambahkan ke antrian")
+    }
+
+    fun processAllPayments() {
+        println("=" .repeat(55))
+        println("🔄 MEMPROSES SEMUA PEMBAYARAN")
+        println("=" .repeat(55))
+
+        for (payment in payments) {
+            println()
+            println("--- ${payment::class.simpleName} ---")
+            val status = payment.processPayment()
+            history.add(status)
+            println("Status: ${status.display()}")
+        }
+    }
+
+    fun showHistory() {
+        println("=" .repeat(55))
+        println("📋 RIWAYAT PEMBAYARAN")
+        println("=" .repeat(55))
+
+        if (history.isEmpty()) {
+            println("Belum ada transaksi")
+        } else {
+            for ((index, status) in history.withIndex()) {
+                println("${index + 1}. ${status.display()}")
+            }
+        }
+        println("=" .repeat(55))
+    }
+}
+
+/**
+ * FUNGSI UTAMA — DEMO SISTEM PEMBAYARAN
  */
 fun main() {
-    println("=" .repeat(50))
-    println("🎓 SISTEM MANAJEMEN MAHASISWA")
-    println("=" .repeat(50))
+    println("=" .repeat(55))
+    println("💳 DEMO SISTEM PEMBAYARAN DENGAN POLIMORFISME")
+    println("=" .repeat(55))
     println()
 
-    // Membuat beberapa objek mahasiswa
-    val mhs1 = Mahasiswa("TI2024001", "Budi Santoso", "Teknik Informatika", 3.75)
-    val mhs2 = Mahasiswa("TI2024002", "Siti Rahayu", "Sistem Informasi", 3.20)
-    val mhs3 = Mahasiswa("TI2024003", "Ahmad Fauzi", "Teknik Komputer", 1.80)
+    // Membuat berbagai metode pembayaran
+    val payment1 = CreditCardPayment(
+        1_000_000.0,
+        "Budi Santoso",
+        "1234567890123456",
+        "12/26",
+        "123"
+    )
+
+    val payment2 = QRISPayment(
+        500_000.0,
+        "Siti Rahayu",
+        "QR1234567890",
+        "MERCHANT001"
+    )
+
+    val payment3 = BankTransferPayment(
+        2_000_000.0,
+        "Ahmad Fauzi",
+        "BCA",
+        "1234567890"
+    )
+
+    val payment4 = EWalletPayment(
+        750_000.0,
+        "Dewi Lestari",
+        "WALLET123",
+        "08123456789",
+        "GoPay"
+    )
+
+    // Processor — menangani semua jenis payment secara polimorfik
+    val processor = PaymentProcessor()
+
+    println("📥 Menambahkan pembayaran ke antrian...")
+    println()
+    processor.addPayment(payment1)
+    processor.addPayment(payment2)
+    processor.addPayment(payment3)
+    processor.addPayment(payment4)
 
     println()
-
-    // Menampilkan data semua mahasiswa
-    mhs1.tampilkan()
+    processor.processAllPayments()
     println()
-    mhs2.tampilkan()
-    println()
-    mhs3.tampilkan()
-    println()
+    processor.showHistory()
 
-    // Demonstrasi update data
-    println("=" .repeat(50))
-    println("🔄 DEMONSTRASI UPDATE DATA")
-    println("=" .repeat(50))
+    // ============================================================
+    // DEMONSTRASI SMART CASTING
+    // ============================================================
+    println()
+    println("--- DEMONSTRASI SMART CASTING ---")
+    val payments: List<Payment> = listOf(payment1, payment2, payment3, payment4)
 
-    // Update IPK mhs3 (yang sebelumnya 1.80)
-    println("Status kelulusan ${mhs3.nama}: ${if (mhs3.isLulus()) "✅ LULUS" else "❌ TIDAK LULUS"}")
-    mhs3.updateIpk(2.50)
-    println("Status kelulusan ${mhs3.nama} (baru): ${if (mhs3.isLulus()) "✅ LULUS" else "❌ TIDAK LULUS"}")
-    mhs3.tampilkan()
+    for (payment in payments) {
+        when (payment) {
+            is CreditCardPayment -> {
+                println("🔍 Kartu Kredit: ${payment.cardNumber} (CVV: ${payment.cvv})")
+                // Smart cast — payment otomatis menjadi CreditCardPayment
+            }
+            is QRISPayment -> {
+                println("🔍 QRIS: ${payment.merchantId} - ${payment.qrCode}")
+            }
+            is BankTransferPayment -> {
+                println("🔍 Transfer Bank: ${payment.bankName} - ${payment.accountNumber}")
+            }
+            is EWalletPayment -> {
+                println("🔍 E-Wallet: ${payment.provider} - ${payment.walletId}")
+            }
+        }
+    }
+
+    // ============================================================
+    // DEMONSTRASI DOWNCASTING DENGAN as?
+    // ============================================================
+    println()
+    println("--- DEMONSTRASI DOWNCASTING DENGAN as? ---")
+    val somePayment: Payment = payment1  // Upcasting (otomatis)
+
+    // Safe downcasting dengan as?
+    val creditCard = somePayment as? CreditCardPayment
+    if (creditCard != null) {
+        println("✅ Berhasil downcast ke CreditCardPayment")
+        println("   Nomor Kartu: ${creditCard.cardNumber}")
+    } else {
+        println("❌ Gagal downcast — objek bukan CreditCardPayment")
+    }
+
+    // Mencoba downcast ke tipe yang salah — aman dengan as?
+    val invalidCast = somePayment as? BankTransferPayment
+    if (invalidCast != null) {
+        println("Berhasil cast ke BankTransferPayment")
+    } else {
+        println("⚠️ Safe cast gagal — return null (tidak crash)")
+    }
+
+    // ============================================================
+    // DEMONSTRASI FINAL METHOD
+    // ============================================================
+    println()
+    println("--- DEMONSTRASI FINAL METHOD ---")
+    println("Total yang harus dibayar: Rp ${formatRupiah(payment1.getTotalAmount())}")
+    // payment1 tidak bisa meng-override getTotalAmount() karena final
 
     println()
-    println("=" .repeat(50))
+    println("=" .repeat(55))
     println("🏁 PROGRAM SELESAI")
-    println("=" .repeat(50))
+    println("=" .repeat(55))
 }
-```
 
-### Output yang Diharapkan
-
-```
-==================================================
-🎓 SISTEM MANAJEMEN MAHASISWA
-==================================================
-
-✅ Mahasiswa Budi Santoso dengan NIM TI2024001 berhasil didaftarkan!
-✅ Mahasiswa Siti Rahayu dengan NIM TI2024002 berhasil didaftarkan!
-✅ Mahasiswa Ahmad Fauzi dengan NIM TI2024003 berhasil didaftarkan!
-
-==================================================
-📋 DATA MAHASISWA
-==================================================
-NIM     : TI2024001
-Nama    : Budi Santoso
-Jurusan : Teknik Informatika
-IPK     : 3.75
-Predikat: 🏆 Cumlaude (Dengan Pujian)
-==================================================
-
-==================================================
-📋 DATA MAHASISWA
-==================================================
-NIM     : TI2024002
-Nama    : Siti Rahayu
-Jurusan : Sistem Informasi
-IPK     : 3.2
-Predikat: ⭐ Sangat Memuaskan
-==================================================
-
-==================================================
-📋 DATA MAHASISWA
-==================================================
-NIM     : TI2024003
-Nama    : Ahmad Fauzi
-Jurusan : Teknik Komputer
-IPK     : 1.8
-Predikat: 📚 Perlu Perbaikan
-==================================================
-
-==================================================
-🔄 DEMONSTRASI UPDATE DATA
-==================================================
-Status kelulusan Ahmad Fauzi: ❌ TIDAK LULUS
-✅ IPK Ahmad Fauzi berhasil diperbarui menjadi 2.5
-Status kelulusan Ahmad Fauzi (baru): ✅ LULUS
-==================================================
-📋 DATA MAHASISWA
-==================================================
-NIM     : TI2024003
-Nama    : Ahmad Fauzi
-Jurusan : Teknik Komputer
-IPK     : 2.5
-Predikat: ✅ Memuaskan
-==================================================
-
-==================================================
-🏁 PROGRAM SELESAI
-==================================================
+fun formatRupiah(nominal: Double): String {
+    val str = nominal.toLong().toString()
+    val builder = StringBuilder()
+    var count = 0
+    for (i in str.length - 1 downTo 0) {
+        builder.insert(0, str[i])
+        count++
+        if (count % 3 == 0 && i > 0) {
+            builder.insert(0, ".")
+        }
+    }
+    return builder.toString()
+}
 ```
 
 ---
@@ -1145,189 +976,220 @@ Predikat: ✅ Memuaskan
 
 ## 6.1 Latihan Mandiri
 
-### Latihan 1: Kelas Buku
+### Latihan 1: Hierarki Bentuk dengan Polimorfisme
 
-Buatlah kelas **`Buku`** dengan:
+Buatlah program dengan hierarki kelas bentuk dan implementasikan polimorfisme:
 
-- **Properti:**
-  - `judul` (String, read-only)
-  - `penulis` (String, read-only)
-  - `tahunTerbit` (Int, read-only)
-  - `isDipinjam` (Boolean, bisa diubah)
-  - `peminjam` (String?, bisa diubah, nullable)
-- **Metode:**
-  - `pinjam(namaPeminjam: String)` → mengubah `isDipinjam` menjadi `true` dan mengisi `peminjam`
-  - `kembalikan()` → mengubah `isDipinjam` menjadi `false` dan mengosongkan `peminjam`
-  - `tampilkanInfo()` → menampilkan semua informasi buku
-- **Constructor:** Primary constructor dengan semua properti (kecuali `isDipinjam` dan `peminjam` yang punya nilai default)
+```kotlin
+// 1. Kelas induk: Shape
+//    - Metode: area(): Double (open)
+//    - Metode: perimeter(): Double (open)
+//    - Metode: name(): String (open)
+
+// 2. Subclass: Circle
+//    - Properti: radius: Double
+//    - Implementasi area(): π * r²
+//    - Implementasi perimeter(): 2 * π * r
+
+// 3. Subclass: Rectangle
+//    - Properti: width: Double, height: Double
+//    - Implementasi area(): width * height
+//    - Implementasi perimeter(): 2 * (width + height)
+
+// 4. Subclass: Square (mewarisi Rectangle)
+//    - Properti: side: Double
+//    - Implementasi yang sesuai
+
+// 5. Di main():
+//    - Buat List<Shape> berisi berbagai shape
+//    - Loop dan tampilkan area dan perimeter setiap shape
+//    - Gunakan when dengan is untuk menampilkan tipe spesifik
+```
+
+### Latihan 2: Sealed Class untuk Status Order
+
+Buatlah sealed class untuk status pesanan:
+
+```kotlin
+// 1. Sealed class: OrderStatus
+//    - Success(data: String, orderId: String)
+//    - Failed(reason: String, errorCode: Int)
+//    - Processing(progress: Int)
+//    - Pending
+
+// 2. Fungsi: handleOrderStatus(status: OrderStatus): String
+//    - Gunakan when expression yang ekshaustif
+//    - Kembalikan pesan yang sesuai untuk setiap status
+
+// 3. Di main():
+//    - Buat beberapa objek OrderStatus
+//    - Panggil handleOrderStatus untuk masing-masing
+```
+
+## 6.2 Tugas 4 (Dikumpulkan)
+
+### Sistem Manajemen Karyawan dengan Polimorfisme
+
+Buatlah program lengkap sistem manajemen karyawan yang mengimplementasikan polimorfisme dengan ketentuan berikut:
+
+#### 1. Kelas `Employee` (Karyawan) — Kelas Induk
+
+| **Komponen** | **Spesifikasi** |
+|---|---|
+| **Properti** | `id: String` (read-only)<br>`name: String` (read-only)<br>`baseSalary: Double` (read-only) |
+| **Metode** | `calculateSalary(): Double` (open — default return baseSalary)<br>`calculateBonus(): Double` (open — default return 0.0)<br>`getRole(): String` (open — default return "Employee")<br>`displayInfo(): String` |
+
+#### 2. Subclass `FullTimeEmployee` — Karyawan Tetap
+
+| **Komponen** | **Spesifikasi** |
+|---|---|
+| **Properti Tambahan** | `allowance: Double` (tunjangan)<br>`annualBonus: Double` (bonus tahunan) |
+| **Overriding** | `calculateSalary()` → baseSalary + allowance<br>`calculateBonus()` → annualBonus / 12<br>`getRole()` → "Full-Time Employee" |
+
+#### 3. Subclass `PartTimeEmployee` — Karyawan Paruh Waktu
+
+| **Komponen** | **Spesifikasi** |
+|---|---|
+| **Properti Tambahan** | `hourlyRate: Double`<br>`hoursWorked: Int` |
+| **Overriding** | `calculateSalary()` → hourlyRate * hoursWorked<br>`calculateBonus()` → 0.0<br>`getRole()` → "Part-Time Employee" |
+
+#### 4. Subclass `ContractEmployee` — Karyawan Kontrak
+
+| **Komponen** | **Spesifikasi** |
+|---|---|
+| **Properti Tambahan** | `contractDuration: Int` (bulan)<br>`projectBonus: Double` |
+| **Overriding** | `calculateSalary()` → baseSalary<br>`calculateBonus()` → projectBonus / contractDuration<br>`getRole()` → "Contract Employee" |
+
+#### 5. Kelas `Company`
+
+| **Komponen** | **Spesifikasi** |
+|---|---|
+| **Properti** | `name: String`<br>`employees: MutableList<Employee>` (private) |
+| **Metode** | `addEmployee(employee: Employee)`<br>`findEmployee(id: String): Employee?`<br>`getTotalSalary(): Double`<br>`getTotalBonus(): Double`<br>`getEmployeesByRole(role: String): List<Employee>`<br>`displayAllEmployees()`<br>`displaySalaryReport()` |
+
+#### 6. Sealed Class `EmployeeStatus`
+
+Buat sealed class untuk status karyawan:
+- `Active` — karyawan aktif
+- `OnLeave` — karyawan cuti
+- `Terminated` — karyawan berhenti
+
+Implementasikan metode `display()`.
+
+#### 7. Fungsi `main()`
+
+- Buat objek `Company` dengan nama "PT Teknologi Maju"
+- Tambahkan **minimal 6 karyawan** (2 dari setiap jenis)
+- Tampilkan semua karyawan
+- Tampilkan laporan gaji
+- Gunakan **polymorphic references** untuk menyimpan semua karyawan
+- Gunakan **smart casting** dengan `is` untuk menangani tipe berbeda
+- Gunakan **sealed class** untuk status karyawan
+
+#### 8. Kriteria Penilaian Tugas 4
+
+| **Kriteria** | **Bobot** | **Indikator** |
+|---|---|---|
+| **Hierarki & Overriding** | 25% | Kelas `open`, metode `override`, penggunaan `super` |
+| **Polymorphic References** | 20% | `List<Employee>` menampung berbagai subclass |
+| **Smart Casting** | 15% | Menggunakan `is` dan `when` untuk type checking |
+| **Sealed Class** | 15% | `EmployeeStatus` dengan `when` ekshaustif |
+| **Fungsi main()** | 15% | Menampilkan semua skenario |
+| **Kode Berkualitas** | 10% | Kode bersih, terstruktur, diberi komentar |
 
 ---
 
-### Latihan 2: Kelas Lingkaran
-
-Buatlah kelas **`Lingkaran`** dengan:
-
-- **Properti:**
-  - `jariJari` (Double, bisa diubah)
-- **Metode:**
-  - `luas()` → mengembalikan luas lingkaran (π × r²)
-  - `keliling()` → mengembalikan keliling lingkaran (2 × π × r)
-  - `tampilkan()` → menampilkan jari-jari, luas, dan keliling
-- **Catatan:** Gunakan `Math.PI` untuk nilai π
-
----
-
-### Latihan 3: Kelas Kalkulator
-
-Buatlah kelas **`Kalkulator`** dengan:
-
-- **Properti:** Tidak ada (kelas tanpa properti)
-- **Metode:**
-  - `tambah(a: Double, b: Double): Double`
-  - `kurang(a: Double, b: Double): Double`
-  - `kali(a: Double, b: Double): Double`
-  - `bagi(a: Double, b: Double): Double` (handle pembagian dengan 0 — jika b = 0, return 0.0 dan cetak peringatan)
-  - `tampilkanOperasi(a: Double, b: Double, operator: Char)` → menampilkan hasil operasi
-
----
-
-## 6.2 Tugas 1 (Dikumpulkan)
-
-### Sistem Manajemen Data Mahasiswa Sederhana
-
-Buatlah program lengkap dengan ketentuan berikut:
-
-**1. Kelas `Mahasiswa` dengan:**
-
-- Properti (semua menggunakan primary constructor):
-  - `nim: String` (read-only)
-  - `nama: String` (read-only)
-  - `jurusan: String` (bisa diubah)
-  - `ipk: Double` (bisa diubah)
-  - `angkatan: Int` (read-only) — diisi otomatis dari 2 digit terakhir NIM
-
-- Metode:
-  - `tampilkan()` → menampilkan semua data mahasiswa dengan format rapi
-  - `predikat()` → mengembalikan predikat berdasarkan IPK (sama seperti contoh)
-  - `isLulus()` → mengembalikan `true` jika IPK ≥ 2.0
-  - `updateIpk(ipkBaru: Double)` → mengupdate IPK dengan validasi (0.0 - 4.0)
-
-**2. Fungsi `main()`:**
-
-- Buat **minimal 5 objek** mahasiswa dengan data berbeda
-- Tampilkan data semua mahasiswa
-- Tampilkan daftar mahasiswa yang **lulus** (IPK ≥ 2.0)
-- Tampilkan daftar mahasiswa dengan predikat **Cumlaude** (IPK ≥ 3.5)
-- Demonstrasikan update IPK untuk salah satu mahasiswa
-
-**3. Kriteria Penilaian:**
-
-| **Kriteria** | **Bobot** |
-| --- | --- |
-| Kelas Mahasiswa didefinisikan dengan benar | 25% |
-| Semua metode berfungsi dengan benar | 25% |
-| Fungsi main() lengkap sesuai ketentuan | 20% |
-| Kode bersih, terstruktur, dan diberi komentar | 15% |
-| Program berjalan tanpa error | 15% |
-
----
-
-# BAGIAN 7: RINGKASAN MATERI PERTEMUAN 1
+# BAGIAN 7: RINGKASAN MATERI PERTEMUAN 4
 
 ## 7.1 Poin-Poin Penting
 
-| **Konsep** | **Penjelasan Singkat** | **Keyword/Sintaks** |
-| --- | --- | --- |
-| **OOP** | Paradigma pemrograman berbasis objek | - |
-| **Kelas** | Blueprint/cetakan untuk membuat objek | `class` |
-| **Objek** | Instansi/realisasi dari kelas | `val obj = NamaKelas()` |
-| **Atribut** | Data/properti yang dimiliki objek | `var nama: String` |
-| **Metode** | Perilaku/fungsi yang dimiliki objek | `fun namaMetode()` |
-| **Enkapsulasi** | Menyembunyikan detail internal | (akan dipelajari nanti) |
-| **Inheritance** | Mewarisi properti dari kelas lain | (akan dipelajari nanti) |
-| **Polimorfisme** | Banyak bentuk untuk satu interface | (akan dipelajari nanti) |
-| **Abstraksi** | Menyembunyikan kompleksitas | (akan dipelajari nanti) |
-| **`val`** | Variabel tidak bisa diubah | `val nama = "Budi"` |
-| **`var`** | Variabel bisa diubah | `var umur = 20` |
-| **Null Safety** | Mencegah NullPointerException | `String?` untuk nullable |
-| **`fun`** | Mendeklarasikan fungsi | `fun main()` |
-| **`println()`** | Mencetak ke layar (dengan new line) | `println("Hello")` |
+| **Konsep** | **Penjelasan** | **Keyword/Sintaks** |
+|---|---|---|
+| **Polimorfisme** | "Banyak bentuk" — satu antarmuka, banyak implementasi | - |
+| **Runtime Polymorphism** | Terjadi saat runtime via method overriding | `open` + `override` |
+| **Compile-time Polymorphism** | Terjadi saat compile-time via method overloading | Method overloading |
+| **Polymorphic References** | Variabel superclass menampung objek subclass | `val animal: Animal = Dog()` |
+| **`is` Operator** | Type checking — apakah objek memiliki tipe tertentu | `if (obj is String)` |
+| **Smart Casting** | Casting otomatis setelah type check | Otomatis setelah `is` |
+| **`as` Operator** | Unsafe cast — crash jika gagal | `obj as String` |
+| **`as?` Operator** | Safe cast — return null jika gagal | `obj as? String` |
+| **Sealed Class** | Hierarki tertutup — semua subclass diketahui | `sealed class Result` |
+| **Ekshaustif `when`** | Compiler memastikan semua kemungkinan ditangani | `when (result) { ... }` |
+
+## 7.2 Kapan Menggunakan Apa?
+
+| **Skenario** | **Solusi** | **Contoh** |
+|---|---|---|
+| Ingin metode berperilaku berbeda di subclass | Method Overriding | `override fun calculateSalary()` |
+| Ingin beberapa metode dengan nama sama tapi parameter berbeda | Method Overloading | `fun add(a: Int, b: Int)` vs `fun add(a: Double, b: Double)` |
+| Ingin satu fungsi menangani berbagai tipe | Polymorphic References | `fun process(animal: Animal)` |
+| Ingin memeriksa tipe objek | Operator `is` | `if (obj is String)` |
+| Ingin casting otomatis setelah type check | Smart Casting | Otomatis setelah `is` |
+| Ingin casting yang aman (tidak crash) | Operator `as?` | `obj as? String` |
+| Ingin hierarki dengan subclass terbatas | Sealed Class | `sealed class Result` |
+| Ingin `when` expression yang ekshaustif | Sealed Class + `when` | `when (result) { is Success -> ... }` |
 
 ---
 
-## 7.2 Persiapan untuk Pertemuan 2
-
-**Materi berikutnya: ENKAPSULASI (Encapsulation)**
-
-Apa yang akan dipelajari:
-
-1. Access modifier (`private`, `protected`, `internal`, `public`)
-2. Getter dan Setter
-3. Properti dengan custom getter/setter
-4. Backing field (`field`)
-5. Praktik enkapsulasi dalam sistem nyata
-
-**Tugas persiapan:**
-
-- Baca modul tentang Enkapsulasi
-- Review kembali materi kelas dan objek
-- Pastikan semua latihan pertemuan 1 sudah selesai
-
----
-
-# BAGIAN 8: REFERENSI DAN SUMBER BELAJAR
+# BAGIAN 8: REFERENSI
 
 ## 8.1 Referensi Utama
 
-1. **Kotlin Official Documentation** — [https://kotlinlang.org/docs/](https://kotlinlang.org/docs/)
-2. **Kotlin Tour** — Belajar Kotlin langsung di browser [https://kotlinlang.org/docs/kotlin-tour-welcome.html](https://kotlinlang.org/docs/kotlin-tour-welcome.html)
-3. **IntelliJ IDEA Documentation** — [https://www.jetbrains.com/help/idea/get-started-with-kotlin.html](https://www.jetbrains.com/help/idea/get-started-with-kotlin.html)
-4. **Kotlin Playground** — Coba Kotlin tanpa instalasi [https://play.kotlinlang.org/](https://play.kotlinlang.org/)
+1. **Kotlin Official Documentation – Type Checks and Casts** — [https://kotlinlang.org/docs/typecasts.html](https://kotlinlang.org/docs/typecasts.html)
+
+2. **Kotlin Official Documentation – Sealed Classes and Interfaces** — [https://kotlinlang.org/docs/sealed-classes.html](https://kotlinlang.org/docs/sealed-classes.html)
+
+3. **Kotlin Official Documentation – Null Safety (as and as?)** — [https://kotlinlang.org/docs/kotlin-tour-intermediate-null-safety.html](https://kotlinlang.org/docs/kotlin-tour-intermediate-null-safety.html)
+
+4. **Kotlin Official Documentation – Serialize Polymorphic Classes** — [https://kotlinlang.org/docs/serialization-polymorphism.html](https://kotlinlang.org/docs/serialization-polymorphism.html)
 
 ## 8.2 Referensi Pendukung
 
-1. **Android Developers — Kotlin Learn** — [https://developer.android.com/kotlin/learn](https://developer.android.com/kotlin/learn)
-2. **Kotlin 中文文档** — [https://book.kotlincn.net/](https://book.kotlincn.net/)
+5. **Kotlin Polymorphism: Dynamic and Static Examples** — codesignal.com
 
-## 8.3 Istilah Penting
+6. **Introduction to Polymorphism in Kotlin** — codesignal.com
 
-| **Istilah** | **Terjemahan** | **Deskripsi** |
-| --- | --- | --- |
-| Object-Oriented Programming | Pemrograman Berorientasi Objek | Paradigma pemrograman berbasis objek |
-| Class | Kelas | Blueprint untuk membuat objek |
-| Object | Objek | Instansi dari kelas |
-| Attribute / Property | Atribut / Properti | Data yang dimiliki objek |
-| Method / Function | Metode / Fungsi | Perilaku yang dimiliki objek |
-| Encapsulation | Enkapsulasi | Menyembunyikan detail internal |
-| Inheritance | Pewarisan | Mewarisi properti dari kelas lain |
-| Polymorphism | Polimorfisme | Banyak bentuk untuk satu interface |
-| Abstraction | Abstraksi | Menyembunyikan kompleksitas |
-| Constructor | Konstruktor | Fungsi khusus saat objek dibuat |
-| Instance | Instansi | Objek yang dibuat dari kelas |
-| Null Safety | Keamanan Null | Mencegah NullPointerException |
+7. **Kotlin Sealed Class Tutorial** — guvi.in
 
 ---
 
 # BAGIAN 9: PENUTUP
 
-## 9.1 Motivasi untuk Mahasiswa
+## 9.1 Pesan untuk Mahasiswa
 
-> **“Belajar OOP itu seperti belajar naik sepeda. Awalnya mungkin terasa sulit dan tidak seimbang. Tapi begitu Anda menguasainya, Anda akan bisa pergi ke mana saja.”**
+> **“Polimorfisme adalah kekuatan untuk menulis kode yang fleksibel dan dapat diperluas. Satu antarmuka, banyak implementasi — itulah esensi dari polimorfisme.”**
 
-Pertemuan 1 ini adalah **fondasi** dari seluruh mata kuliah OOP. Jika Anda memahami konsep **kelas** dan **objek** dengan baik, materi-materi berikutnya akan terasa lebih mudah.
+Pertemuan 4 ini adalah **puncak** dari pemahaman OOP setelah mempelajari enkapsulasi (pertemuan 2) dan pewarisan (pertemuan 3). Dengan memahami polimorfisme, Anda bisa:
+
+- **Menulis kode yang lebih fleksibel** — satu fungsi menangani berbagai tipe
+- **Membuat sistem yang dapat diperluas** — tambah kelas baru tanpa mengubah kode lama
+- **Memanfaatkan smart casting** — kode lebih bersih dan aman
+- **Menggunakan sealed class** — hierarki yang aman dan terkontrol
 
 **Ingatlah:**
+1. Polimorfisme adalah tentang **"banyak bentuk"** — satu antarmuka, banyak implementasi
+2. **Overriding** = runtime polymorphism, **Overloading** = compile-time polymorphism
+3. **Smart casting** adalah fitur andalan Kotlin — manfaatkan semaksimal mungkin
+4. **`as?` lebih aman daripada `as`** — gunakan `as?` kecuali 100% yakin
+5. **Sealed class** untuk hierarki yang tertutup dan aman
 
-1. OOP adalah **cara berpikir**, bukan sekadar sintaks
-2. Latihan adalah **kunci** — semakin banyak Anda menulis kode, semakin paham Anda
-3. Jangan takut **error** — error adalah guru terbaik
-4. **Bertanyalah** jika ada yang tidak dimengerti
+## 9.2 Persiapan untuk Pertemuan 5
 
-## 9.2 Doa Penutup
+**Materi berikutnya: ABSTRAKSI DAN INTERFACE**
 
-Semoga pertemuan pertama ini memberikan pemahaman yang kuat tentang dasar-dasar Pemrograman Berorientasi Objek. Teruslah belajar, teruslah berlatih, dan jadilah programmer yang handal!
+Apa yang akan dipelajari:
+1. Konsep abstraksi — menyembunyikan kompleksitas
+2. Abstract class di Kotlin
+3. Interface di Kotlin
+4. Perbedaan abstract class vs interface
+5. Multiple interface implementation
+6. Default methods di interface
+7. Studi kasus: sistem dengan abstract class dan interface
 
-**Sampai jumpa di pertemuan 2!** 🚀
+**Tugas persiapan:**
+- Baca modul tentang Abstraksi dan Interface
+- Review kembali konsep polimorfisme dari pertemuan 4
+- Pastikan semua latihan pertemuan 4 sudah selesai
 
 ---
 
