@@ -1,8 +1,3 @@
-Baik, saya pahami sekarang. Anda ingin **1 studi kasus** yang dipecah menjadi **5 soal** (sub-tugas) yang saling berkaitan. Setiap soal akan fokus pada implementasi bagian tertentu dari sistem, dan secara bertahap membangun keseluruhan aplikasi OOP dari dasar hingga lengkap.
-
-Berikut saya sajikan **Tugas Mandiri OOP - Sistem Manajemen Transportasi Online (5 Soal Berurutan)**.
-
----
 
 # TUGAS MANDIRI OOP (1 STUDI KASUS - 5 SOAL)
 
