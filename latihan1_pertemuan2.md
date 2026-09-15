@@ -1,8 +1,9 @@
-Berikut adalah **Modul Praktikum Pertemuan 1** yang **Super Ultra Lengkap** sesuai dengan materi pokok yang telah diberikan. Modul ini mencakup **3 Praktikum Terbimbing** (step-by-step dengan dosen) dan **5 Praktikum Mandiri** (dikerjakan sendiri oleh mahasiswa), lengkap dengan teori pendukung, kode solusi, contoh output, dan rubrik penilaian.
+Berikut adalah **Modul Praktikum Pertemuan 2**. Modul ini mencakup **3 Praktikum Terbimbing** (step-by-step dengan dosen) dan **5 Praktikum Mandiri** (dikerjakan sendiri oleh mahasiswa), lengkap dengan teori pendukung, kode solusi, contoh output, dan rubrik penilaian.
 
 ---
 
 # MODUL PRAKTIKUM PEMROGRAMAN BERORIENTASI OBJEK (PBO)
+
 ## Pertemuan 1: Pengenalan Kotlin & Konsep Dasar OOP
 
 | **Kode Mata Kuliah** | TRI-XX-XXX |
@@ -14,6 +15,7 @@ Berikut adalah **Modul Praktikum Pertemuan 1** yang **Super Ultra Lengkap** sesu
 ---
 
 ### A. Capaian Pembelajaran Praktikum (CPMK)
+
 1. Mahasiswa mampu menginstal dan mengkonfigurasi lingkungan pengembangan Kotlin (JDK + IntelliJ IDEA).
 2. Mahasiswa mampu membuat project Kotlin pertama dan menjalankan fungsi `main()`.
 3. Mahasiswa mampu membedakan serta mengimplementasikan `var`, `val`, dan `const val` dalam kode sederhana.
@@ -21,6 +23,7 @@ Berikut adalah **Modul Praktikum Pertemuan 1** yang **Super Ultra Lengkap** sesu
 5. Mahasiswa mampu menginstansiasi objek dan mengakses properti/metodenya tanpa menggunakan keyword `new`.
 
 ### B. Alat dan Bahan
+
 - **Perangkat Keras**: Laptop/PC dengan spesifikasi minimal (RAM 4GB, Processor Dual Core).
 - **Perangkat Lunak**:
   - JDK 11 atau lebih tinggi (disarankan **Eclipse Adoptium** atau **Oracle OpenJDK**).
@@ -36,9 +39,11 @@ Berikut adalah **Modul Praktikum Pertemuan 1** yang **Super Ultra Lengkap** sesu
 ---
 
 ### Praktikum Terbimbing 1: Hello World & Eksplorasi `var`, `val`, dan `const val`
+
 **Tujuan**: Memahami struktur dasar project Kotlin, fungsi `main()`, serta perbedaan `var`, `val`, dan `const val`.
 
 **Langkah-Langkah**:
+
 1. Buka IntelliJ IDEA, pilih **New Project**.
 2. Pada panel kiri, pilih **Kotlin**. Isi:
    - **Name**: `Praktikum1_HelloWorld`
@@ -83,8 +88,9 @@ fun main() {
 }
 ```
 
-5. **Jalankan kode** dengan mengklik tombol segitiga hijau di samping fungsi `main()`.
-6. **Output yang diharapkan**:
+1. **Jalankan kode** dengan mengklik tombol segitiga hijau di samping fungsi `main()`.
+2. **Output yang diharapkan**:
+
 ```text
 Halo, Budi Santoso!
 Nama setelah diubah: Andi Santoso
@@ -95,15 +101,18 @@ Aplikasi versi: 1.0.0
 ```
 
 **Diskusi Terbimbing**:
+
 - Mengapa `APP_VERSION` menggunakan `const val` dan diletakkan di luar `main()`?
 - Apa yang terjadi jika kita meng-uncomment baris `nim = ...`? Jelaskan pesan errornya.
 
 ---
 
 ### Praktikum Terbimbing 2: Membuat Class dan Objek Sederhana (Blueprint Kue)
+
 **Tujuan**: Memahami analogi kelas sebagai cetakan (blueprint) dan objek sebagai realisasinya.
 
 **Langkah-Langkah**:
+
 1. Di project yang sama, buat file Kotlin baru dengan cara: Klik kanan pada folder `src/main/kotlin` → **New** → **Kotlin Class/File**. Beri nama `Kue.kt`.
 2. Tulis kode berikut di `Kue.kt`:
 
@@ -134,7 +143,7 @@ class Kue(
 }
 ```
 
-3. Buka kembali `main.kt`, dan tambahkan kode berikut di dalam fungsi `main()` (boleh di bawah kode sebelumnya):
+1. Buka kembali `main.kt`, dan tambahkan kode berikut di dalam fungsi `main()` (boleh di bawah kode sebelumnya):
 
 ```kotlin
 fun main() {
@@ -159,7 +168,8 @@ fun main() {
 }
 ```
 
-4. **Jalankan kode**. Output tambahan yang diharapkan:
+1. **Jalankan kode**. Output tambahan yang diharapkan:
+
 ```text
 --- DEMO CLASS KUE ---
 --- Resep Kue Ultah ---
@@ -176,15 +186,18 @@ Nama kue ultah sekarang: Ultah
 ```
 
 **Diskusi Terbimbing**:
+
 - Apa perbedaan `val nama` dengan `var rasa` pada class `Kue`?
 - Coba buat objek baru dengan nama `kueCoklat` dan isi data sendiri.
 
 ---
 
 ### Praktikum Terbimbing 3: Implementasi Sistem Data Mahasiswa dengan Logika Predikat
+
 **Tujuan**: Menggabungkan seluruh konsep (properti, method, logika `when`) sesuai studi kasus di materi Sesi 4.
 
 **Langkah-Langkah**:
+
 1. Buat file baru bernama `Mahasiswa.kt`.
 2. Tulis kode berikut:
 
@@ -231,7 +244,7 @@ class Mahasiswa(
 }
 ```
 
-3. Di `main.kt`, tambahkan kode berikut di bagian bawah fungsi `main()`:
+1. Di `main.kt`, tambahkan kode berikut di bagian bawah fungsi `main()`:
 
 ```kotlin
 fun main() {
@@ -255,7 +268,7 @@ fun main() {
 }
 ```
 
-4. **Jalankan kode**. Output yang diharapkan (perhatikan predikat):
+1. **Jalankan kode**. Output yang diharapkan (perhatikan predikat):
 
 ```text
 --- DATA MAHASISWA ---
@@ -301,6 +314,7 @@ Predikat : Sangat Memuaskan
 ```
 
 **Diskusi Terbimbing**:
+
 - Apa fungsi `String.format("%.2f", ipk)` dan mengapa kita menggunakannya?
 - Jika IPK diisi 4.5, bagaimana sistem menanganinya? (Petunjuk: lihat fungsi `perbaikiNilai` yang membatasi maksimal 4.0, tetapi konstruktor belum dilindungi. Diskusikan solusi menggunakan `init` block).
 
@@ -313,9 +327,11 @@ Predikat : Sangat Memuaskan
 ---
 
 ### Soal Mandiri 1: Sistem Peminjaman Buku Sederhana
+
 **Tema**: Class `Buku` dengan properti `judul` (val), `pengarang` (val), dan `tahunTerbit` (var). Buat method `infoBuku()` yang menampilkan semua data dengan format rapi. Di `main()`, buat **minimal 3 objek** buku dengan data berbeda (misal: buku fiksi, non-fiksi, dan komik). Tampilkan info semua buku.
 
 **Kerangka Kode Minimal**:
+
 ```kotlin
 class Buku(val judul: String, val pengarang: String, var tahunTerbit: Int) {
     fun infoBuku() {
@@ -329,6 +345,7 @@ fun main() {
 ```
 
 **Kriteria Penilaian**:
+
 - [ ] Deklarasi class tepat dengan properti yang sesuai (val/var).
 - [ ] Method `infoBuku` berjalan dengan output yang rapi.
 - [ ] Minimal 3 objek diinstansiasi tanpa `new`.
@@ -337,11 +354,13 @@ fun main() {
 ---
 
 ### Soal Mandiri 2: Perhitungan Lingkaran (Luas & Keliling)
+
 **Tema**: Class `Lingkaran` memiliki properti `jariJari` (Double, bisa diubah via `var`). Buat method `hitungLuas()` dan `hitungKeliling()` yang mengembalikan nilai Double (gunakan `Math.PI`). Di `main()`, buat **2 objek** dengan jari-jari 7.0 dan 14.0. Tampilkan luas dan keliling masing-masing dengan 2 angka di belakang koma.
 
 **Hint**: Gunakan `String.format("%.2f", hasil)`.
 
 **Kerangka Kode**:
+
 ```kotlin
 class Lingkaran(var jariJari: Double) {
     fun hitungLuas(): Double {
@@ -356,7 +375,9 @@ class Lingkaran(var jariJari: Double) {
 ---
 
 ### Soal Mandiri 3: Manajemen Gaji Karyawan
+
 **Tema**: Buat class `Karyawan` dengan properti `nama` (val) dan `gajiPokok` (var, Double). Tambahkan method:
+
 - `tampilkanGaji()` → mencetak "Nama: X, Gaji: Rp Y".
 - `naikGaji(persen: Double)` → menambah gaji pokok sebesar persen (%) yang diberikan (misal: naikGaji(10.0) berarti gaji += 10%).
 
@@ -367,11 +388,14 @@ Di `main()`, buat 1 objek karyawan dengan gaji 5.000.000. Tampilkan gaji awal, n
 ---
 
 ### Soal Mandiri 4: Persegi Panjang (Interaksi Properti)
+
 **Tema**: Class `PersegiPanjang` dengan properti `panjang` dan `lebar` (keduanya `var` Double). Buat method:
+
 - `hitungLuas()` → mengembalikan luas.
 - `ubahUkuran(panjangBaru: Double, lebarBaru: Double)` → mengubah panjang dan lebar objek.
 
 Di `main()`:
+
 1. Buat objek dengan panjang 10.0 dan lebar 5.0.
 2. Tampilkan luas awal.
 3. Panggil method `ubahUkuran(20.0, 10.0)`.
@@ -382,15 +406,18 @@ Di `main()`:
 ---
 
 ### Soal Mandiri 5: Data Mahasiswa Interaktif (Input User)
+
 **Tema**: Modifikasi class `Mahasiswa` dari materi (Sesi 4) agar dapat menerima input dari pengguna menggunakan fungsi `readln()`.
 
 **Spesifikasi**:
+
 1. Minta user mengisi data `NIM`, `Nama`, `Jurusan`, dan `IPK` melalui console.
 2. Buat objek `Mahasiswa` dari data yang diinput.
 3. Tampilkan data mahasiswa beserta predikatnya (gunakan method `tampilkan()`).
 4. **Bonus (Nilai Tambah)**: Buat perulangan `while` agar user bisa memasukkan data untuk beberapa mahasiswa (misal: 3 kali), lalu tampilkan semua data di akhir program.
 
 **Contoh Interaksi (Minimal)**:
+
 ```text
 Masukkan NIM: TI999
 Masukkan Nama: Siti Aisyah
@@ -438,7 +465,7 @@ Predikat : Sangat Memuaskan
 
 2. **Cara Mengumpulkan**:
    - **Zip** folder project tersebut (bukan hanya file `.kt`-nya, tapi seluruh folder project).
-   - Upload : https://forms.gle/ZNtULh8zE2VpA93a7.
+   - Upload : <https://forms.gle/V4rbD95ZAc18Tit46>.
 
 3. **Hal yang Perlu Diperhatikan**:
    - Pastikan tidak ada error (garis merah) di IntelliJ sebelum di-zip.
