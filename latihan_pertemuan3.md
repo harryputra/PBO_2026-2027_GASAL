@@ -1,5 +1,7 @@
 # LATIHAN PRAKTIKUM PERTEMUAN 3
+
 ## PEWARISAN (INHERITANCE) DENGAN KOTLIN
+
 ### "Membangun Hierarki Kelas yang Kuat dan Reusable"
 
 ---
@@ -7,7 +9,7 @@
 ## PETUNJUK PRAKTIKUM
 
 | **Komponen** | **Keterangan** |
-|---|---|
+| --- | --- |
 | **Topik** | Pewarisan (Inheritance): `open`, `override`, `super`, Constructor Inheritance |
 | **Durasi** | 8 Jam Praktik (480 menit) |
 | **Tools** | IntelliJ IDEA / Kotlin Playground |
@@ -16,9 +18,11 @@
 ---
 
 ## LATIHAN 1: DASAR PEWARISAN & KEYWORD `open`
+
 **Estimasi Waktu: 30 Menit | Tingkat: Dasar**
 
 ### Tujuan
+
 Memahami cara membuat kelas yang bisa diwarisi dan mengimplementasikan pewarisan dasar.
 
 ### Instruksi
@@ -43,11 +47,12 @@ open class Kendaraan(
 **1.2** Buatlah dua kelas anak yang mewarisi `Kendaraan`:
 
 | **Kelas** | **Properti Tambahan** | **Override** |
-|---|---|---|
+| --- | --- | --- |
 | `Mobil` | `jumlahPintu: Int`, `jenisBahanBakar: String` | `info()` menampilkan info mobil lengkap |
 | `Motor` | `kapasitasMesin: Int`, `jenis: String` | `info()` menampilkan info motor lengkap |
 
 **1.3** Buat fungsi `main()` yang:
+
 - Membuat 1 objek `Mobil` dan 1 objek `Motor`
 - Memanggil `info()` dan `start()` pada masing-masing objek
 
@@ -63,6 +68,7 @@ Honda Beat dinyalakan
 ```
 
 ### Pertanyaan Refleksi
+
 1. Apa yang terjadi jika kelas `Kendaraan` tidak ditandai `open`? Coba dan jelaskan!
 2. Apa yang terjadi jika metode `info()` tidak ditandai `open`? Coba dan jelaskan!
 3. Mengapa metode `start()` tidak bisa di-override?
@@ -70,9 +76,11 @@ Honda Beat dinyalakan
 ---
 
 ## LATIHAN 2: OVERRIDING METODE & PROPERTI
+
 **Estimasi Waktu: 45 Menit | Tingkat: Dasar-Menengah**
 
 ### Tujuan
+
 Memahami overriding metode dan properti, serta penggunaan keyword `super`.
 
 ### Instruksi
@@ -101,7 +109,7 @@ open class Hewan(
 **2.2** Buatlah 3 subclass dengan spesifikasi:
 
 | **Subclass** | **Override Properti** | **Override Metode** |
-|---|---|---|
+| --- | --- | --- |
 | `Kucing` | `jenis = "Kucing"` | `suara()` → "Meong! Meong!" |
 | `Anjing` | `jenis = "Anjing"` | `suara()` → "Guk! Guk!" |
 | `Sapi` | `jenis = "Sapi"` | `suara()` → "Mooo!" |
@@ -133,6 +141,7 @@ Mooo!
 ```
 
 ### Tantangan Tambahan
+
 - Tambahkan subclass `KucingAnggora` yang mewarisi `Kucing`
 - Override `suara()` di `KucingAnggora` dan panggil `super.suara()` terlebih dahulu
 - Gunakan `final override` di `Kucing` untuk `suara()` dan buktikan bahwa `KucingAnggora` tidak bisa meng-override-nya (berikan komentar sebagai bukti)
@@ -140,9 +149,11 @@ Mooo!
 ---
 
 ## LATIHAN 3: CONSTRUCTOR DALAM INHERITANCE
+
 **Estimasi Waktu: 45 Menit | Tingkat: Menengah**
 
 ### Tujuan
+
 Memahami cara kerja primary dan secondary constructor dalam hierarki pewarisan.
 
 ### Instruksi
@@ -232,6 +243,7 @@ Tunj. Manajemen: Rp 3000000.0
 ```
 
 ### Pertanyaan Refleksi
+
 1. Mengapa parameter `nama`, `nip`, dan `gajiPokok` di subclass tidak perlu menggunakan `val`/`var`?
 2. Apa yang terjadi jika subclass tidak memanggil constructor superclass?
 3. Jelaskan urutan inisialisasi yang terjadi saat objek `Manager` dibuat!
@@ -239,9 +251,11 @@ Tunj. Manajemen: Rp 3000000.0
 ---
 
 ## LATIHAN 4: PEWARISAN BERTINGKAT (MULTI-LEVEL INHERITANCE)
+
 **Estimasi Waktu: 60 Menit | Tingkat: Menengah**
 
 ### Tujuan
+
 Membangun hierarki kelas bertingkat dan memahami rantai pewarisan.
 
 ### Instruksi
@@ -292,7 +306,7 @@ open class ThreeDimensionalShape(name: String) : Shape(name) {
 **4.4** Buat subclass konkret:
 
 | **Kelas** | **Mewarisi** | **Properti** | **Rumus** |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `Circle` | `TwoDimensionalShape` | `jariJari: Double` | Luas = π × r², Keliling = 2 × π × r |
 | `Rectangle` | `TwoDimensionalShape` | `panjang: Double`, `lebar: Double` | Luas = p × l, Keliling = 2 × (p + l) |
 | `Triangle` | `TwoDimensionalShape` | `alas: Double`, `tinggi: Double`, `sisiA: Double`, `sisiB: Double`, `sisiC: Double` | Luas = 0.5 × a × t, Keliling = a + b + c |
@@ -300,6 +314,7 @@ open class ThreeDimensionalShape(name: String) : Shape(name) {
 | `Sphere` | `ThreeDimensionalShape` | `jariJari: Double` | Luas = 4 × π × r², Volume = (4/3) × π × r³ |
 
 **4.5** Buat fungsi `main()` yang:
+
 - Membuat objek dari semua subclass
 - Menampilkan info setiap bentuk
 - Menghitung total luas semua bentuk 2D
@@ -330,9 +345,11 @@ Total Volume Bangun 3D: 64.00
 ---
 
 ## LATIHAN 5: STUDI KASUS — SISTEM PERPUSTAKAAN
+
 **Estimasi Waktu: 90 Menit | Tingkat: Menengah-Lanjut**
 
 ### Tujuan
+
 Mengimplementasikan semua konsep pewarisan dalam studi kasus nyata.
 
 ### Instruksi
@@ -350,53 +367,54 @@ Bangunlah sistem manajemen perpustakaan dengan hierarki berikut:
 **5.1** Kelas Induk `ItemPerpustakaan`:
 
 | **Komponen** | **Spesifikasi** |
-|---|---|
+| --- | --- |
 | **Properti** | `id: String` (read-only)<br>`judul: String` (read-only)<br>`tahunTerbit: Int` (read-only)<br>`isDipinjam: Boolean` (private setter, default false) |
 | **Metode** | `dipinjam(): Boolean` — menandai item dipinjam<br>`dikembalikan(): Boolean` — menandai item dikembalikan<br>`hitungDenda(hariTerlambat: Int): Double` (open) — default: 1000 per hari<br>`tampilkanInfo()` (open) — menampilkan info item |
 
 **5.2** Subclass `Buku` (mewarisi `ItemPerpustakaan`):
 
 | **Komponen** | **Spesifikasi** |
-|---|---|
+| --- | --- |
 | **Properti Tambahan** | `penulis: String`<br>`jumlahHalaman: Int` |
 | **Override** | `hitungDenda()` → 2000 per hari<br>`tampilkanInfo()` → menampilkan info buku lengkap |
 
 **5.3** Subclass `Majalah` (mewarisi `ItemPerpustakaan`):
 
 | **Komponen** | **Spesifikasi** |
-|---|---|
+| --- | --- |
 | **Properti Tambahan** | `edisi: Int`<br>`bulanTerbit: String` |
 | **Override** | `hitungDenda()` → 500 per hari<br>`tampilkanInfo()` → menampilkan info majalah lengkap |
 
 **5.4** Subclass `BukuFiksi` (mewarisi `Buku`):
 
 | **Komponen** | **Spesifikasi** |
-|---|---|
+| --- | --- |
 | **Properti Tambahan** | `genre: String` ("Fantasi", "Romance", "Misteri", dll.) |
 | **Override** | `tampilkanInfo()` → menampilkan genre |
 
 **5.5** Subclass `BukuNonFiksi` (mewarisi `Buku`):
 
 | **Komponen** | **Spesifikasi** |
-|---|---|
+| --- | --- |
 | **Properti Tambahan** | `bidang: String` ("Sains", "Sejarah", "Teknologi", dll.) |
 | **Override** | `tampilkanInfo()` → menampilkan bidang |
 
 **5.6** Subclass `MajalahHarian` dan `MajalahMingguan` (mewarisi `Majalah`):
 
 | **Kelas** | **Properti Tambahan** | **Override** |
-|---|---|---|
+| --- | --- | --- |
 | `MajalahHarian` | `hariTerbit: String` | `hitungDenda()` → 300 per hari |
 | `MajalahMingguan` | `hariTerbit: String` | `hitungDenda()` → 700 per hari |
 
 **5.7** Kelas `Perpustakaan`:
 
 | **Komponen** | **Spesifikasi** |
-|---|---|
+| --- | --- |
 | **Properti** | `nama: String` (read-only)<br>`koleksi: MutableList<ItemPerpustakaan>` (private) |
 | **Metode** | `tambahItem(item: ItemPerpustakaan)`<br>`cariItem(keyword: String): List<ItemPerpustakaan>`<br>`tampilkanSemuaItem()`<br>`tampilkanItemDipinjam()`<br>`tampilkanItemTersedia()`<br>`hitungTotalDenda(hariTerlambat: Int): Double` |
 
 **5.8** Fungsi `main()`:
+
 - Buat objek `Perpustakaan` dengan nama "Perpustakaan Digital Nusantara"
 - Tambahkan minimal **8 item** (2 BukuFiksi, 2 BukuNonFiksi, 2 MajalahHarian, 2 MajalahMingguan)
 - Tampilkan semua item
@@ -450,9 +468,11 @@ Total denda: Rp 11.500
 ---
 
 ## LATIHAN 6: TANTANGAN — SISTEM MANAJEMEN KENDARAAN
+
 **Estimasi Waktu: 90 Menit | Tingkat: Lanjut**
 
 ### Tujuan
+
 Mengimplementasikan semua konsep pewarisan dalam satu sistem terintegrasi.
 
 ### Instruksi
@@ -462,35 +482,35 @@ Buatlah program lengkap **Sistem Manajemen Kendaraan** dengan ketentuan berikut:
 #### 1. Kelas `Vehicle` (Kendaraan) — Kelas Induk
 
 | **Komponen** | **Spesifikasi** |
-|---|---|
+| --- | --- |
 | **Properti** | `brand: String` (read-only)<br>`model: String` (read-only)<br>`year: Int` (read-only)<br>`price: Double` (read-only)<br>`isSold: Boolean` (private setter, default false) |
 | **Metode** | `calculateTax(): Double` (open) → pajak = 10% dari harga<br>`sell(): Boolean` → menandai kendaraan sebagai sold<br>`isAvailable(): Boolean` → cek ketersediaan<br>`displayInfo(): String` (open) → menampilkan info kendaraan |
 
 #### 2. Subclass `Car` — Mobil
 
 | **Komponen** | **Spesifikasi** |
-|---|---|
+| --- | --- |
 | **Properti Tambahan** | `numberOfDoors: Int`<br>`fuelType: String` ("Bensin", "Diesel", "Listrik") |
 | **Override** | `calculateTax()` → pajak = 12% dari harga<br>`displayInfo()` → menampilkan info mobil |
 
 #### 3. Subclass `Motorcycle` — Motor
 
 | **Komponen** | **Spesifikasi** |
-|---|---|
+| --- | --- |
 | **Properti Tambahan** | `engineCapacity: Int` (dalam cc)<br>`type: String` ("Sport", "Cruiser", "Matic") |
 | **Override** | `calculateTax()` → pajak = 5% dari harga<br>`displayInfo()` → menampilkan info motor |
 
 #### 4. Subclass `Truck` — Truk
 
 | **Komponen** | **Spesifikasi** |
-|---|---|
+| --- | --- |
 | **Properti Tambahan** | `loadCapacity: Double` (dalam ton)<br>`numberOfAxles: Int` |
 | **Override** | `calculateTax()` → pajak = 15% dari harga<br>`displayInfo()` → menampilkan info truk |
 
 #### 5. Kelas `Dealership` (Dealer)
 
 | **Komponen** | **Spesifikasi** |
-|---|---|
+| --- | --- |
 | **Properti** | `name: String` (read-only)<br>`vehicles: MutableList<Vehicle>` (private) |
 | **Metode** | `addVehicle(vehicle: Vehicle)`<br>`findVehicle(brand: String, model: String): Vehicle?`<br>`sellVehicle(brand: String, model: String): Boolean`<br>`getAvailableVehicles(): List<Vehicle>`<br>`getSoldVehicles(): List<Vehicle>`<br>`displayAllVehicles()`<br>`displayAvailableVehicles()`<br>`getTotalRevenue(): Double` |
 
@@ -550,7 +570,7 @@ Rp 268.000.000
 ### Kriteria Penilaian Latihan 6
 
 | **Kriteria** | **Bobot** | **Indikator** |
-|---|---|---|
+| --- | --- | --- |
 | **Hierarki Pewarisan** | 30% | • Kelas induk `Vehicle` menggunakan `open`<br>• Subclass mewarisi dengan benar menggunakan `:`<br>• Constructor inheritance diimplementasikan dengan benar |
 | **Overriding** | 25% | • Metode `calculateTax()` di-override di semua subclass<br>• Menggunakan `super` dengan tepat<br>• Overriding properti jika diperlukan |
 | **Fungsi main()** | 20% | • Menampilkan semua skenario yang diminta<br>• Output jelas dan informatif |
@@ -562,7 +582,7 @@ Rp 268.000.000
 ## RUBRIK PENILAIAN PRAKTIKUM PERTEMUAN 3
 
 | **Latihan** | **Bobot** | **Kriteria** |
-|---|---|---|
+| --- | --- | --- |
 | **Latihan 1** | 10% | Program berjalan, output sesuai, refleksi dijawab |
 | **Latihan 2** | 15% | Overriding benar, `super` digunakan, tantangan tambahan dikerjakan |
 | **Latihan 3** | 15% | Constructor inheritance benar, urutan inisialisasi dipahami |
@@ -594,6 +614,7 @@ Rp 268.000.000
 4. **Gunakan `println()`** untuk debugging dan memahami alur program
 5. **Diskusikan** dengan teman jika mengalami kesulitan, tapi tetap tulis kode sendiri
 6. **Manfaatkan dokumentasi** — [https://kotlinlang.org/docs/inheritance.html](https://kotlinlang.org/docs/inheritance.html)
+7. **Link Pengumpulan** - <https://forms.gle/L7b8sKAfC1ZCfvcK9>
 
 ---
 
